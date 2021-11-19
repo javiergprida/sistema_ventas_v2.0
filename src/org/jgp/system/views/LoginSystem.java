@@ -37,23 +37,24 @@ public class LoginSystem extends javax.swing.JFrame {
         boxPassword = new javax.swing.JPasswordField();
         panelExit = new javax.swing.JPanel();
         Exit = new javax.swing.JLabel();
-        fondo = new javax.swing.JLabel();
+        pandel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(240, 240, 240));
         setMaximumSize(new java.awt.Dimension(300, 500));
         setUndecorated(true);
         setResizable(false);
 
-        panel.setBackground(new java.awt.Color(204, 204, 204));
+        panel.setBackground(new java.awt.Color(80, 70, 170));
         panel.setMaximumSize(new java.awt.Dimension(300, 500));
         panel.setMinimumSize(new java.awt.Dimension(300, 500));
         panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        iconsuser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/jpg/system/img/icons8-user-100.png"))); // NOI18N
+        iconsuser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/jgp/system/img/icons8-user-100.png"))); // NOI18N
         panel.add(iconsuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, -1, -1));
 
         login.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        login.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/jpg/system/img/icons8-accede-redondeado-derecho-64.png"))); // NOI18N
+        login.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/jgp/system/img/icons8-accede-redondeado-derecho-64.png"))); // NOI18N
         login.setToolTipText("lOGIN");
         login.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         panel.add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 380, 90, 80));
@@ -104,10 +105,12 @@ public class LoginSystem extends javax.swing.JFrame {
         });
         panel.add(boxPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 260, 30));
 
-        panelExit.setBackground(new java.awt.Color(180, 197, 64));
+        panelExit.setBackground(new java.awt.Color(240, 240, 240));
+        panelExit.setForeground(new java.awt.Color(240, 240, 240));
 
+        Exit.setBackground(new java.awt.Color(240, 240, 240));
         Exit.setFont(new java.awt.Font("Roboto Medium", 1, 24)); // NOI18N
-        Exit.setForeground(new java.awt.Color(255, 255, 255));
+        Exit.setForeground(new java.awt.Color(255, 51, 51));
         Exit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Exit.setText("X");
         Exit.setToolTipText("Exit");
@@ -129,37 +132,38 @@ public class LoginSystem extends javax.swing.JFrame {
         panelExitLayout.setHorizontalGroup(
             panelExitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelExitLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Exit, javax.swing.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(Exit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 6, Short.MAX_VALUE))
         );
         panelExitLayout.setVerticalGroup(
             panelExitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelExitLayout.createSequentialGroup()
-                .addGap(0, 1, Short.MAX_VALUE)
-                .addComponent(Exit))
+            .addGroup(panelExitLayout.createSequentialGroup()
+                .addComponent(Exit)
+                .addGap(0, 6, Short.MAX_VALUE))
         );
 
         panel.add(panelExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 30, 30));
 
-        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/jpg/system/img/fondo_1.png"))); // NOI18N
-        fondo.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
-                fondoMouseDragged(evt);
-            }
-        });
-        fondo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                fondoMousePressed(evt);
-            }
-        });
-        panel.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, -1));
+        pandel2.setBackground(new java.awt.Color(240, 240, 240));
+
+        javax.swing.GroupLayout pandel2Layout = new javax.swing.GroupLayout(pandel2);
+        pandel2.setLayout(pandel2Layout);
+        pandel2Layout.setHorizontalGroup(
+            pandel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 90, Short.MAX_VALUE)
+        );
+        pandel2Layout.setVerticalGroup(
+            pandel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 500, Short.MAX_VALUE)
+        );
+
+        panel.add(pandel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 500));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -201,30 +205,18 @@ public class LoginSystem extends javax.swing.JFrame {
     }//GEN-LAST:event_boxPasswordMousePressed
 
     private void ExitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExitMouseEntered
-         panelExit.setBackground(Color.red);
+         panelExit.setBackground(new Color(255,51,51));
         Exit.setForeground(Color.WHITE);
     }//GEN-LAST:event_ExitMouseEntered
 
     private void ExitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExitMouseExited
-         panelExit.setBackground(new Color(180,197,64));
-        Exit.setForeground(Color.WHITE);
+         panelExit.setBackground(new Color(240,240,240));
+        Exit.setForeground(new Color(255,51,51));
     }//GEN-LAST:event_ExitMouseExited
 
     private void ExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExitMouseClicked
           System.exit(0);
     }//GEN-LAST:event_ExitMouseClicked
-
-    private void fondoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fondoMousePressed
-       xMouse = evt.getX();
-        yMouse = evt.getY();
-    }//GEN-LAST:event_fondoMousePressed
-
-    private void fondoMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fondoMouseDragged
-         int x = evt.getXOnScreen();
-        int y = evt.getYOnScreen();
-
-        this.setLocation(x - xMouse, y - yMouse);
-    }//GEN-LAST:event_fondoMouseDragged
 
     /**
      * @param args the command line arguments
@@ -265,9 +257,9 @@ public class LoginSystem extends javax.swing.JFrame {
     private javax.swing.JLabel Exit;
     private javax.swing.JPasswordField boxPassword;
     private javax.swing.JTextField boxUsername;
-    private javax.swing.JLabel fondo;
     private javax.swing.JLabel iconsuser;
     private javax.swing.JLabel login;
+    private javax.swing.JPanel pandel2;
     private javax.swing.JPanel panel;
     private javax.swing.JPanel panelExit;
     private javax.swing.JLabel password;
