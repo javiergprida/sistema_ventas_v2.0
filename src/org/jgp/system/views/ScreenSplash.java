@@ -12,7 +12,7 @@ public class ScreenSplash {
         try{
         
             for(int i = 0; i <= 100; i++){
-                Thread.sleep(20);
+                Thread.sleep(60);
             splash.cargando.setText(""+i+"%");
             splash.progressbar.setValue(i);
             if(i == 100){

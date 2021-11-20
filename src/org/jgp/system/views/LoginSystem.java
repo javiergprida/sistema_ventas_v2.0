@@ -48,6 +48,16 @@ public class LoginSystem extends javax.swing.JFrame {
         panel.setBackground(new java.awt.Color(80, 70, 170));
         panel.setMaximumSize(new java.awt.Dimension(300, 500));
         panel.setMinimumSize(new java.awt.Dimension(300, 500));
+        panel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                panelMouseDragged(evt);
+            }
+        });
+        panel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                panelMousePressed(evt);
+            }
+        });
         panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         iconsuser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/jgp/system/img/icons8-user-100.png"))); // NOI18N
@@ -133,7 +143,7 @@ public class LoginSystem extends javax.swing.JFrame {
             panelExitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelExitLayout.createSequentialGroup()
                 .addComponent(Exit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 6, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         panelExitLayout.setVerticalGroup(
             panelExitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -217,6 +227,18 @@ public class LoginSystem extends javax.swing.JFrame {
     private void ExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExitMouseClicked
           System.exit(0);
     }//GEN-LAST:event_ExitMouseClicked
+
+    private void panelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelMousePressed
+        xMouse = evt.getX();
+        yMouse = evt.getY();
+    }//GEN-LAST:event_panelMousePressed
+
+    private void panelMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelMouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+
+        this.setLocation(x - xMouse, y - yMouse);
+    }//GEN-LAST:event_panelMouseDragged
 
     /**
      * @param args the command line arguments
