@@ -7,7 +7,7 @@ public class SubFormConfig extends javax.swing.JPanel {
     public SubFormConfig(String name) {
         initComponents();
         setOpaque(false);
-        labelForm.setText("Form " + name);
+        labelForm.setText( name);
     }
 
     @SuppressWarnings("unchecked")
@@ -17,10 +17,13 @@ public class SubFormConfig extends javax.swing.JPanel {
         labelForm = new javax.swing.JLabel();
         btnBack = new org.jgp.system.views.swing.Button();
 
-        labelForm.setFont(new java.awt.Font("sansserif", 1, 48)); // NOI18N
+        setMaximumSize(new java.awt.Dimension(1180, 750));
+        setMinimumSize(new java.awt.Dimension(1180, 750));
+        setPreferredSize(new java.awt.Dimension(1180, 750));
+
+        labelForm.setFont(new java.awt.Font("Roboto Black", 1, 48)); // NOI18N
         labelForm.setForeground(new java.awt.Color(212, 212, 212));
         labelForm.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelForm.setText("Form");
 
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -35,21 +38,19 @@ public class SubFormConfig extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelForm, javax.swing.GroupLayout.DEFAULT_SIZE, 997, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labelForm, javax.swing.GroupLayout.PREFERRED_SIZE, 922, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(labelForm, javax.swing.GroupLayout.DEFAULT_SIZE, 553, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(labelForm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(704, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

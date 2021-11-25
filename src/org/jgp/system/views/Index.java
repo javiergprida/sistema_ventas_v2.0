@@ -2,12 +2,15 @@
 package org.jgp.system.views;
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
 import org.jgp.system.views.component.Menu;
 import org.jgp.system.views.component.SubFormCategoria;
 import org.jgp.system.views.component.SubFormClientes;
 import org.jgp.system.views.component.SubFormVenta;
 import org.jgp.system.views.component.SubFormCompra;
 import org.jgp.system.views.component.SubFormConfig;
+import org.jgp.system.views.component.SubFormDetalleCompras;
+import org.jgp.system.views.component.SubFormDetalleVentas;
 import org.jgp.system.views.component.SubFormMedidas;
 import org.jgp.system.views.component.SubFormProductos;
 import org.jgp.system.views.component.SubFormProveedores;
@@ -34,7 +37,9 @@ public class Index extends javax.swing.JFrame {
         menu.initMenu(event);
         slideshow.initSlideshow(menu, 
                 new SubFormVenta("Nueva Venta"), 
+                new SubFormDetalleVentas("Detalle Venta"), 
                 new SubFormCompra("Nueva compra"), 
+                new SubFormDetalleCompras("Detalle compra"), 
                 new SubFormProductos("Productos"), 
                 new SubFormClientes("Clientes"), 
                 new SubFormUsuarios("Usuarios"), 
@@ -101,6 +106,13 @@ public class Index extends javax.swing.JFrame {
                 .addComponent(Exit, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
         );
 
+        pictureBox.setMaximumSize(new java.awt.Dimension(1180, 750));
+        pictureBox.setMinimumSize(new java.awt.Dimension(1180, 750));
+        pictureBox.setPreferredSize(new java.awt.Dimension(1180, 750));
+
+        slideshow.setMaximumSize(new java.awt.Dimension(1180, 750));
+        slideshow.setMinimumSize(new java.awt.Dimension(1180, 750));
+        slideshow.setPreferredSize(new java.awt.Dimension(1180, 750));
         slideshow.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 slideshowMouseDragged(evt);
@@ -112,26 +124,27 @@ public class Index extends javax.swing.JFrame {
             }
         });
         pictureBox.add(slideshow);
-        slideshow.setBounds(40, 10, 1100, 690);
+        slideshow.setBounds(10, -10, 1180, 750);
 
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
         panel.setLayout(panelLayout);
         panelLayout.setHorizontalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(panelExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(pictureBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
-                .addGap(0, 1140, Short.MAX_VALUE)
-                .addComponent(panelExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLayout.createSequentialGroup()
                 .addComponent(panelExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(9, 9, 9)
-                .addComponent(pictureBox, javax.swing.GroupLayout.DEFAULT_SIZE, 756, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addComponent(pictureBox, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -160,7 +173,10 @@ public class Index extends javax.swing.JFrame {
     }//GEN-LAST:event_ExitMouseExited
 
     private void ExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExitMouseClicked
+    int pregunta = JOptionPane.showConfirmDialog(null, "Esta seguro que desea salir del sistema?", "pregunta", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+    if(pregunta == 0){    
     System.exit(0);
+    }
     }//GEN-LAST:event_ExitMouseClicked
 
     private void slideshowMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_slideshowMousePressed

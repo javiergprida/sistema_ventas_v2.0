@@ -23,14 +23,16 @@ public class Menu extends javax.swing.JPanel {
     public void initMenu(EventMenu event) {
         this.event = event;
         addMenu(new ImageIcon(getClass().getResource("/org/jgp/system/img/Nventa.png")), "Nueva Venta", 0);
-        addMenu(new ImageIcon(getClass().getResource("/org/jgp/system/img/compras.png")), "Nueva Compra", 1);
-        addMenu(new ImageIcon(getClass().getResource("/org/jgp/system/img/producto.png")), "Producto", 2);
-        addMenu(new ImageIcon(getClass().getResource("/org/jgp/system/img/Clientes.png")), "Clientes", 3);
-        addMenu(new ImageIcon(getClass().getResource("/org/jgp/system/img/adduser.png")), "Usuarios", 4);
-        addMenu(new ImageIcon(getClass().getResource("/org/jgp/system/img/proveedor.png")), "Proveedor", 5);
-        addMenu(new ImageIcon(getClass().getResource("/org/jgp/system/img/medida.png")), "Medida", 6);
-        addMenu(new ImageIcon(getClass().getResource("/org/jgp/system/img/categoria.png")), "Categoria", 7);
-        addMenu(new ImageIcon(getClass().getResource("/org/jgp/system/img/config.png")), "Configuracion", 8);
+        addMenu(new ImageIcon(getClass().getResource("/org/jgp/system/img/Nventa.png")), "Detalle Venta", 1);
+        addMenu(new ImageIcon(getClass().getResource("/org/jgp/system/img/compras.png")), "Nueva Compra", 2);
+        addMenu(new ImageIcon(getClass().getResource("/org/jgp/system/img/compras.png")), "Detalle Compra", 3);
+        addMenu(new ImageIcon(getClass().getResource("/org/jgp/system/img/producto.png")), "Producto", 4);
+        addMenu(new ImageIcon(getClass().getResource("/org/jgp/system/img/Clientes.png")), "Clientes", 5);
+        addMenu(new ImageIcon(getClass().getResource("/org/jgp/system/img/adduser.png")), "Usuarios", 6);
+        addMenu(new ImageIcon(getClass().getResource("/org/jgp/system/img/proveedor.png")), "Proveedor", 7);
+        addMenu(new ImageIcon(getClass().getResource("/org/jgp/system/img/medida.png")), "Medida", 8);
+        addMenu(new ImageIcon(getClass().getResource("/org/jgp/system/img/categoria.png")), "Categoria", 9);
+        addMenu(new ImageIcon(getClass().getResource("/org/jgp/system/img/config.png")), "Configuracion", 10);
     }
 
     private void addMenu(Icon icon, String name, int index) {

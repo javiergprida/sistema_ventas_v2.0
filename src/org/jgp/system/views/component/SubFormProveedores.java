@@ -7,7 +7,7 @@ public class SubFormProveedores extends javax.swing.JPanel {
     public SubFormProveedores(String name) {
         initComponents();
         setOpaque(false);
-        labelForm.setText("Form " + name);
+        labelForm.setText( name);
     }
 
     @SuppressWarnings("unchecked")
@@ -16,11 +16,29 @@ public class SubFormProveedores extends javax.swing.JPanel {
 
         labelForm = new javax.swing.JLabel();
         btnBack = new org.jgp.system.views.swing.Button();
+        panelProveedor = new javax.swing.JPanel();
+        Cuit = new javax.swing.JLabel();
+        boxCuitProve = new javax.swing.JTextField();
+        Nombre = new javax.swing.JLabel();
+        boxNombreProve = new javax.swing.JTextField();
+        Telefono = new javax.swing.JLabel();
+        boxTelefonoProve = new javax.swing.JTextField();
+        Direccion = new javax.swing.JLabel();
+        btnNuevoProve = new org.jgp.system.views.swing.Button();
+        btnRegistrarProve = new org.jgp.system.views.swing.Button();
+        btnModificarProve = new org.jgp.system.views.swing.Button();
+        scrollPanePro = new javax.swing.JScrollPane();
+        tableProve = new javax.swing.JTable();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        boxDireccionProve = new javax.swing.JTextPane();
 
-        labelForm.setFont(new java.awt.Font("sansserif", 1, 48)); // NOI18N
+        setMaximumSize(new java.awt.Dimension(1180, 750));
+        setMinimumSize(new java.awt.Dimension(1180, 750));
+        setPreferredSize(new java.awt.Dimension(1180, 750));
+
+        labelForm.setFont(new java.awt.Font("Roboto Black", 1, 48)); // NOI18N
         labelForm.setForeground(new java.awt.Color(212, 212, 212));
         labelForm.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelForm.setText("Form");
 
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -29,6 +47,127 @@ public class SubFormProveedores extends javax.swing.JPanel {
             }
         });
 
+        panelProveedor.setBackground(new java.awt.Color(102, 115, 255));
+        panelProveedor.setForeground(new java.awt.Color(212, 212, 212));
+
+        Cuit.setFont(new java.awt.Font("Roboto Medium", 0, 20)); // NOI18N
+        Cuit.setForeground(new java.awt.Color(212, 212, 212));
+        Cuit.setText("Cuit");
+
+        boxCuitProve.setBackground(new java.awt.Color(255, 255, 255));
+        boxCuitProve.setFont(new java.awt.Font("Roboto Medium", 0, 19)); // NOI18N
+        boxCuitProve.setForeground(new java.awt.Color(0, 0, 0));
+
+        Nombre.setFont(new java.awt.Font("Roboto Medium", 0, 20)); // NOI18N
+        Nombre.setForeground(new java.awt.Color(212, 212, 212));
+        Nombre.setText("Nombre");
+
+        boxNombreProve.setBackground(new java.awt.Color(255, 255, 255));
+        boxNombreProve.setFont(new java.awt.Font("Roboto Medium", 0, 19)); // NOI18N
+        boxNombreProve.setForeground(new java.awt.Color(0, 0, 0));
+
+        Telefono.setFont(new java.awt.Font("Roboto Medium", 0, 20)); // NOI18N
+        Telefono.setForeground(new java.awt.Color(212, 212, 212));
+        Telefono.setText("Telefono");
+
+        boxTelefonoProve.setBackground(new java.awt.Color(255, 255, 255));
+        boxTelefonoProve.setFont(new java.awt.Font("Roboto Medium", 0, 19)); // NOI18N
+        boxTelefonoProve.setForeground(new java.awt.Color(0, 0, 0));
+
+        Direccion.setFont(new java.awt.Font("Roboto Medium", 0, 20)); // NOI18N
+        Direccion.setForeground(new java.awt.Color(212, 212, 212));
+        Direccion.setText("Direccion");
+
+        btnNuevoProve.setText("Nuevo");
+
+        btnRegistrarProve.setText("Registrar");
+
+        btnModificarProve.setText("Modificar");
+
+        tableProve.setFont(new java.awt.Font("Roboto Medium", 0, 19)); // NOI18N
+        tableProve.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Id", "Producto", "Precio", "Cantidad", "Medida", "Estado"
+            }
+        ));
+        scrollPanePro.setViewportView(tableProve);
+
+        boxDireccionProve.setBackground(new java.awt.Color(255, 255, 255));
+        boxDireccionProve.setFont(new java.awt.Font("Roboto Medium", 0, 19)); // NOI18N
+        boxDireccionProve.setForeground(new java.awt.Color(0, 0, 0));
+        jScrollPane1.setViewportView(boxDireccionProve);
+
+        javax.swing.GroupLayout panelProveedorLayout = new javax.swing.GroupLayout(panelProveedor);
+        panelProveedor.setLayout(panelProveedorLayout);
+        panelProveedorLayout.setHorizontalGroup(
+            panelProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelProveedorLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(panelProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelProveedorLayout.createSequentialGroup()
+                        .addGroup(panelProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnNuevoProve, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Cuit))
+                        .addGroup(panelProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelProveedorLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(btnRegistrarProve, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnModificarProve, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelProveedorLayout.createSequentialGroup()
+                                .addGap(22, 22, 22)
+                                .addComponent(boxCuitProve, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(panelProveedorLayout.createSequentialGroup()
+                        .addGroup(panelProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Nombre)
+                            .addComponent(Telefono)
+                            .addComponent(Direccion))
+                        .addGap(59, 59, 59)
+                        .addGroup(panelProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(boxTelefonoProve, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(boxNombreProve))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(scrollPanePro)
+                .addGap(25, 25, 25))
+        );
+        panelProveedorLayout.setVerticalGroup(
+            panelProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelProveedorLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(panelProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Cuit)
+                    .addComponent(boxCuitProve, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Nombre)
+                    .addComponent(boxNombreProve, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addGroup(panelProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Telefono)
+                    .addComponent(boxTelefonoProve, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelProveedorLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(Direccion))
+                    .addGroup(panelProveedorLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 349, Short.MAX_VALUE)
+                .addGroup(panelProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnNuevoProve, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRegistrarProve, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnModificarProve, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelProveedorLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(scrollPanePro, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -36,19 +175,22 @@ public class SubFormProveedores extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelForm, javax.swing.GroupLayout.DEFAULT_SIZE, 997, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 183, Short.MAX_VALUE)
+                        .addComponent(labelForm, javax.swing.GroupLayout.PREFERRED_SIZE, 916, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(panelProveedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(labelForm, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(labelForm, javax.swing.GroupLayout.DEFAULT_SIZE, 553, Short.MAX_VALUE)
+                .addComponent(panelProveedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -59,7 +201,22 @@ public class SubFormProveedores extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Cuit;
+    private javax.swing.JLabel Direccion;
+    private javax.swing.JLabel Nombre;
+    private javax.swing.JLabel Telefono;
+    private javax.swing.JTextField boxCuitProve;
+    private javax.swing.JTextPane boxDireccionProve;
+    private javax.swing.JTextField boxNombreProve;
+    private javax.swing.JTextField boxTelefonoProve;
     private org.jgp.system.views.swing.Button btnBack;
+    private org.jgp.system.views.swing.Button btnModificarProve;
+    private org.jgp.system.views.swing.Button btnNuevoProve;
+    private org.jgp.system.views.swing.Button btnRegistrarProve;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelForm;
+    private javax.swing.JPanel panelProveedor;
+    private javax.swing.JScrollPane scrollPanePro;
+    private javax.swing.JTable tableProve;
     // End of variables declaration//GEN-END:variables
 }

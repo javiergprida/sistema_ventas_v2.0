@@ -1,22 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package org.jgp.system.views;
 
 import java.awt.Color;
+import org.jgp.system.controller.loginController;
+import org.jgp.system.models.Users;
+import org.jgp.system.models.UsersDao;
 
-/**
- *
- * @author javie
- */
+
 public class LoginSystem extends javax.swing.JFrame {
-
+    
+   Users us = new Users();
+   UsersDao usDao = new UsersDao();
   int xMouse, yMouse;
   
     public LoginSystem() {
         initComponents();
+        loginController users = new loginController(us, usDao, this);
     }
 
     /**
@@ -30,7 +29,6 @@ public class LoginSystem extends javax.swing.JFrame {
 
         panel = new javax.swing.JPanel();
         iconsuser = new javax.swing.JLabel();
-        login = new javax.swing.JLabel();
         username = new javax.swing.JLabel();
         boxUsername = new javax.swing.JTextField();
         password = new javax.swing.JLabel();
@@ -38,6 +36,7 @@ public class LoginSystem extends javax.swing.JFrame {
         panelExit = new javax.swing.JPanel();
         Exit = new javax.swing.JLabel();
         pandel2 = new javax.swing.JPanel();
+        btnlogin = new org.jgp.system.views.swing.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(240, 240, 240));
@@ -61,18 +60,12 @@ public class LoginSystem extends javax.swing.JFrame {
         panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         iconsuser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/jgp/system/img/icons8-user-100.png"))); // NOI18N
-        panel.add(iconsuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, -1, -1));
-
-        login.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        login.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/jgp/system/img/icons8-accede-redondeado-derecho-64.png"))); // NOI18N
-        login.setToolTipText("lOGIN");
-        login.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        panel.add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 380, 90, 80));
+        panel.add(iconsuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, -1, -1));
 
         username.setFont(new java.awt.Font("Roboto Medium", 1, 24)); // NOI18N
         username.setForeground(new java.awt.Color(255, 255, 255));
         username.setText("Username:");
-        panel.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, -1, -1));
+        panel.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, -1, -1));
 
         boxUsername.setBackground(new java.awt.Color(255, 255, 255));
         boxUsername.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
@@ -90,12 +83,12 @@ public class LoginSystem extends javax.swing.JFrame {
                 boxUsernameActionPerformed(evt);
             }
         });
-        panel.add(boxUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 260, 30));
+        panel.add(boxUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 260, 30));
 
         password.setFont(new java.awt.Font("Roboto Medium", 1, 24)); // NOI18N
         password.setForeground(new java.awt.Color(255, 255, 255));
         password.setText("Password:");
-        panel.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, -1, -1));
+        panel.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 270, -1, -1));
 
         boxPassword.setBackground(new java.awt.Color(255, 255, 255));
         boxPassword.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
@@ -113,7 +106,7 @@ public class LoginSystem extends javax.swing.JFrame {
                 boxPasswordActionPerformed(evt);
             }
         });
-        panel.add(boxPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 260, 30));
+        panel.add(boxPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 320, 260, 30));
 
         panelExit.setBackground(new java.awt.Color(240, 240, 240));
         panelExit.setForeground(new java.awt.Color(240, 240, 240));
@@ -169,11 +162,14 @@ public class LoginSystem extends javax.swing.JFrame {
 
         panel.add(pandel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 500));
 
+        btnlogin.setText("LOGIN");
+        panel.add(btnlogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 400, 100, 40));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, 418, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -277,10 +273,10 @@ public class LoginSystem extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Exit;
-    private javax.swing.JPasswordField boxPassword;
-    private javax.swing.JTextField boxUsername;
+    public javax.swing.JPasswordField boxPassword;
+    public javax.swing.JTextField boxUsername;
+    public org.jgp.system.views.swing.Button btnlogin;
     private javax.swing.JLabel iconsuser;
-    private javax.swing.JLabel login;
     private javax.swing.JPanel pandel2;
     private javax.swing.JPanel panel;
     private javax.swing.JPanel panelExit;
