@@ -1,4 +1,3 @@
-
 package org.jgp.system.views;
 
 import java.awt.Color;
@@ -6,16 +5,16 @@ import org.jgp.system.controller.loginController;
 import org.jgp.system.models.Users;
 import org.jgp.system.models.UsersDao;
 
-
 public class LoginSystem extends javax.swing.JFrame {
-    
-   Users us = new Users();
-   UsersDao usDao = new UsersDao();
-  int xMouse, yMouse;
-  
+
+    Users us = new Users();
+    UsersDao usDao = new UsersDao();
+    int xMouse, yMouse;
+
     public LoginSystem() {
         initComponents();
         loginController users = new loginController(us, usDao, this);
+         this.unShow.setVisible(false);
     }
 
     /**
@@ -37,6 +36,8 @@ public class LoginSystem extends javax.swing.JFrame {
         Exit = new javax.swing.JLabel();
         pandel2 = new javax.swing.JPanel();
         btnlogin = new org.jgp.system.views.swing.Button();
+        show = new javax.swing.JLabel();
+        unShow = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(240, 240, 240));
@@ -60,12 +61,12 @@ public class LoginSystem extends javax.swing.JFrame {
         panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         iconsuser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/jgp/system/img/icons8-user-100.png"))); // NOI18N
-        panel.add(iconsuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, -1, -1));
+        panel.add(iconsuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, -1, -1));
 
         username.setFont(new java.awt.Font("Roboto Medium", 1, 24)); // NOI18N
         username.setForeground(new java.awt.Color(255, 255, 255));
         username.setText("Username:");
-        panel.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, -1, -1));
+        panel.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, -1, -1));
 
         boxUsername.setBackground(new java.awt.Color(255, 255, 255));
         boxUsername.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
@@ -83,12 +84,12 @@ public class LoginSystem extends javax.swing.JFrame {
                 boxUsernameActionPerformed(evt);
             }
         });
-        panel.add(boxUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 260, 30));
+        panel.add(boxUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, 260, 30));
 
         password.setFont(new java.awt.Font("Roboto Medium", 1, 24)); // NOI18N
         password.setForeground(new java.awt.Color(255, 255, 255));
         password.setText("Password:");
-        panel.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 270, -1, -1));
+        panel.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, -1, -1));
 
         boxPassword.setBackground(new java.awt.Color(255, 255, 255));
         boxPassword.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
@@ -106,7 +107,7 @@ public class LoginSystem extends javax.swing.JFrame {
                 boxPasswordActionPerformed(evt);
             }
         });
-        panel.add(boxPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 320, 260, 30));
+        panel.add(boxPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 320, 260, 30));
 
         panelExit.setBackground(new java.awt.Color(240, 240, 240));
         panelExit.setForeground(new java.awt.Color(240, 240, 240));
@@ -163,7 +164,33 @@ public class LoginSystem extends javax.swing.JFrame {
         panel.add(pandel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 500));
 
         btnlogin.setText("LOGIN");
-        panel.add(btnlogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 400, 100, 40));
+        panel.add(btnlogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 400, 100, 40));
+
+        show.setBackground(new java.awt.Color(255, 255, 255));
+        show.setForeground(new java.awt.Color(255, 255, 255));
+        show.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        show.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/jgp/system/img/visible-24.png"))); // NOI18N
+        show.setToolTipText("Show!!");
+        show.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        show.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                showMousePressed(evt);
+            }
+        });
+        panel.add(show, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 320, 30, 30));
+
+        unShow.setBackground(new java.awt.Color(255, 255, 255));
+        unShow.setForeground(new java.awt.Color(255, 255, 255));
+        unShow.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        unShow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/jgp/system/img/ojo-cerrado-24.png"))); // NOI18N
+        unShow.setToolTipText("Un Show!!");
+        unShow.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        unShow.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                unShowMousePressed(evt);
+            }
+        });
+        panel.add(unShow, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 320, 30, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -181,15 +208,15 @@ public class LoginSystem extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void boxUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxUsernameActionPerformed
-       
+
     }//GEN-LAST:event_boxUsernameActionPerformed
 
     private void boxPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxPasswordActionPerformed
-       
+
     }//GEN-LAST:event_boxPasswordActionPerformed
 
     private void boxUsernameMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boxUsernameMousePressed
-         if (boxUsername.getText().equals("Ingrese su nombre de ususario")) {
+        if (boxUsername.getText().equals("Ingrese su nombre de ususario")) {
             boxUsername.setText("");
             boxUsername.setForeground(Color.BLACK);
         }
@@ -211,17 +238,17 @@ public class LoginSystem extends javax.swing.JFrame {
     }//GEN-LAST:event_boxPasswordMousePressed
 
     private void ExitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExitMouseEntered
-         panelExit.setBackground(new Color(255,51,51));
+        panelExit.setBackground(new Color(255, 51, 51));
         Exit.setForeground(Color.WHITE);
     }//GEN-LAST:event_ExitMouseEntered
 
     private void ExitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExitMouseExited
-         panelExit.setBackground(new Color(240,240,240));
-        Exit.setForeground(new Color(255,51,51));
+        panelExit.setBackground(new Color(240, 240, 240));
+        Exit.setForeground(new Color(255, 51, 51));
     }//GEN-LAST:event_ExitMouseExited
 
     private void ExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExitMouseClicked
-          System.exit(0);
+        System.exit(0);
     }//GEN-LAST:event_ExitMouseClicked
 
     private void panelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelMousePressed
@@ -235,6 +262,18 @@ public class LoginSystem extends javax.swing.JFrame {
 
         this.setLocation(x - xMouse, y - yMouse);
     }//GEN-LAST:event_panelMouseDragged
+
+    private void showMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showMousePressed
+       show.setVisible(false);
+        unShow.setVisible(true);
+        boxPassword.setEchoChar((char) 0);
+    }//GEN-LAST:event_showMousePressed
+
+    private void unShowMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_unShowMousePressed
+        show.setVisible(true);
+        unShow.setVisible(false);
+        boxPassword.setEchoChar('*');
+    }//GEN-LAST:event_unShowMousePressed
 
     /**
      * @param args the command line arguments
@@ -281,6 +320,8 @@ public class LoginSystem extends javax.swing.JFrame {
     private javax.swing.JPanel panel;
     private javax.swing.JPanel panelExit;
     private javax.swing.JLabel password;
+    private javax.swing.JLabel show;
+    private javax.swing.JLabel unShow;
     private javax.swing.JLabel username;
     // End of variables declaration//GEN-END:variables
 }

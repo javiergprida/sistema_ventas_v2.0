@@ -3,8 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/javie/OneDrive/Escritorio/JAVA/netBeansProjects/proyectos%20con%20java/SistemaVentasV2.0/src/org/jgp/system/views/ScreenSplash.java</file>
-            <file>file:/C:/Users/javie/OneDrive/Escritorio/JAVA/netBeansProjects/proyectos%20con%20java/SistemaVentasV2.0/src/org/jgp/system/views/Index.java</file>
+            <file>file:/C:/Users/javie/OneDrive/Escritorio/JAVA/netBeansProjects/proyectos%20con%20java/SistemaVentasV2.0/src/org/jgp/system/views/component/SubFormUsuarios.java</file>
+            <file>file:/C:/Users/javie/OneDrive/Escritorio/JAVA/netBeansProjects/proyectos%20con%20java/SistemaVentasV2.0/src/org/jgp/system/models/Table.java</file>
+            <file>file:/C:/Users/javie/OneDrive/Escritorio/JAVA/netBeansProjects/proyectos%20con%20java/SistemaVentasV2.0/src/org/jgp/system/controller/UsersController.java</file>
+            <file>file:/C:/Users/javie/OneDrive/Escritorio/JAVA/netBeansProjects/proyectos%20con%20java/SistemaVentasV2.0/src/org/jgp/system/models/UsersDao.java</file>
         </group>
     </open-files>
 </project-private>
