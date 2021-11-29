@@ -27,10 +27,10 @@ public class SubFormProveedores extends javax.swing.JPanel {
         btnNuevoProve = new org.jgp.system.views.swing.Button();
         btnRegistrarProve = new org.jgp.system.views.swing.Button();
         btnModificarProve = new org.jgp.system.views.swing.Button();
-        scrollPanePro = new javax.swing.JScrollPane();
-        tableProve = new javax.swing.JTable();
         jScrollPane1 = new javax.swing.JScrollPane();
         boxDireccionProve = new javax.swing.JTextPane();
+        scrollPaneProveedor = new javax.swing.JScrollPane();
+        tableProveedor = new rojerusan.RSTableMetro();
 
         setMaximumSize(new java.awt.Dimension(1180, 750));
         setMinimumSize(new java.awt.Dimension(1180, 750));
@@ -84,21 +84,31 @@ public class SubFormProveedores extends javax.swing.JPanel {
 
         btnModificarProve.setText("Modificar");
 
-        tableProve.setFont(new java.awt.Font("Roboto Medium", 0, 19)); // NOI18N
-        tableProve.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Id", "Producto", "Precio", "Cantidad", "Medida", "Estado"
-            }
-        ));
-        scrollPanePro.setViewportView(tableProve);
-
         boxDireccionProve.setBackground(new java.awt.Color(255, 255, 255));
         boxDireccionProve.setFont(new java.awt.Font("Roboto Medium", 0, 19)); // NOI18N
         boxDireccionProve.setForeground(new java.awt.Color(0, 0, 0));
         jScrollPane1.setViewportView(boxDireccionProve);
+
+        tableProveedor.setBackground(new java.awt.Color(204, 204, 204));
+        tableProveedor.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Id", "Producto", "Precio", "Cantidad", "medida", "Estado"
+            }
+        ));
+        tableProveedor.setColorBackgoundHead(new java.awt.Color(102, 115, 255));
+        tableProveedor.setColorBordeFilas(new java.awt.Color(204, 204, 204));
+        tableProveedor.setColorBordeHead(new java.awt.Color(204, 204, 204));
+        tableProveedor.setColorFilasBackgound1(new java.awt.Color(204, 204, 255));
+        tableProveedor.setColorFilasBackgound2(new java.awt.Color(153, 153, 255));
+        tableProveedor.setColorFilasForeground1(new java.awt.Color(212, 212, 212));
+        tableProveedor.setColorFilasForeground2(new java.awt.Color(212, 212, 212));
+        tableProveedor.setColorForegroundHead(new java.awt.Color(212, 212, 212));
+        tableProveedor.setColorSelBackgound(new java.awt.Color(102, 51, 255));
+        tableProveedor.setColorSelForeground(new java.awt.Color(212, 212, 212));
+        scrollPaneProveedor.setViewportView(tableProveedor);
 
         javax.swing.GroupLayout panelProveedorLayout = new javax.swing.GroupLayout(panelProveedor);
         panelProveedor.setLayout(panelProveedorLayout);
@@ -130,42 +140,42 @@ public class SubFormProveedores extends javax.swing.JPanel {
                             .addComponent(boxTelefonoProve, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(boxNombreProve))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollPanePro)
-                .addGap(25, 25, 25))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(scrollPaneProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35))
         );
         panelProveedorLayout.setVerticalGroup(
             panelProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelProveedorLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addGroup(panelProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Cuit)
-                    .addComponent(boxCuitProve, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panelProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Nombre)
-                    .addComponent(boxNombreProve, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
-                .addGroup(panelProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Telefono)
-                    .addComponent(boxTelefonoProve, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(panelProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelProveedorLayout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(Direccion))
-                    .addGroup(panelProveedorLayout.createSequentialGroup()
+                        .addGroup(panelProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Cuit)
+                            .addComponent(boxCuitProve, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 349, Short.MAX_VALUE)
+                        .addGroup(panelProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Nombre)
+                            .addComponent(boxNombreProve, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(21, 21, 21)
+                        .addGroup(panelProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Telefono)
+                            .addComponent(boxTelefonoProve, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(panelProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelProveedorLayout.createSequentialGroup()
+                                .addGap(17, 17, 17)
+                                .addComponent(Direccion))
+                            .addGroup(panelProveedorLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(scrollPaneProveedor, javax.swing.GroupLayout.DEFAULT_SIZE, 587, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNuevoProve, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnRegistrarProve, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnModificarProve, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(17, 17, 17))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelProveedorLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(scrollPanePro, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -216,7 +226,7 @@ public class SubFormProveedores extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelForm;
     private javax.swing.JPanel panelProveedor;
-    private javax.swing.JScrollPane scrollPanePro;
-    private javax.swing.JTable tableProve;
+    private javax.swing.JScrollPane scrollPaneProveedor;
+    public rojerusan.RSTableMetro tableProveedor;
     // End of variables declaration//GEN-END:variables
 }

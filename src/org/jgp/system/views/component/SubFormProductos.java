@@ -30,12 +30,12 @@ public class SubFormProductos extends javax.swing.JPanel {
         medida = new javax.swing.JLabel();
         comboMedidaPro = new javax.swing.JComboBox<>();
         Categoria = new javax.swing.JLabel();
+        scrollPaneProducto = new javax.swing.JScrollPane();
+        tableProducto = new rojerusan.RSTableMetro();
         comboCategoriaPro = new javax.swing.JComboBox<>();
         btnNuevoPro = new org.jgp.system.views.swing.Button();
         btnRegistrarPro = new org.jgp.system.views.swing.Button();
         btnModificarPro = new org.jgp.system.views.swing.Button();
-        scrollPanePro = new javax.swing.JScrollPane();
-        tablePro = new javax.swing.JTable();
 
         setMaximumSize(new java.awt.Dimension(1180, 750));
         setMinimumSize(new java.awt.Dimension(1180, 750));
@@ -107,6 +107,27 @@ public class SubFormProductos extends javax.swing.JPanel {
         Categoria.setForeground(new java.awt.Color(212, 212, 212));
         Categoria.setText("Categoria");
 
+        tableProducto.setBackground(new java.awt.Color(204, 204, 204));
+        tableProducto.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Id", "Producto", "Precio", "Cantidad", "medida", "Estado"
+            }
+        ));
+        tableProducto.setColorBackgoundHead(new java.awt.Color(102, 115, 255));
+        tableProducto.setColorBordeFilas(new java.awt.Color(204, 204, 204));
+        tableProducto.setColorBordeHead(new java.awt.Color(204, 204, 204));
+        tableProducto.setColorFilasBackgound1(new java.awt.Color(204, 204, 255));
+        tableProducto.setColorFilasBackgound2(new java.awt.Color(153, 153, 255));
+        tableProducto.setColorFilasForeground1(new java.awt.Color(212, 212, 212));
+        tableProducto.setColorFilasForeground2(new java.awt.Color(212, 212, 212));
+        tableProducto.setColorForegroundHead(new java.awt.Color(212, 212, 212));
+        tableProducto.setColorSelBackgound(new java.awt.Color(102, 51, 255));
+        tableProducto.setColorSelForeground(new java.awt.Color(212, 212, 212));
+        scrollPaneProducto.setViewportView(tableProducto);
+
         comboCategoriaPro.setBackground(new java.awt.Color(255, 255, 255));
         comboCategoriaPro.setFont(new java.awt.Font("Roboto Medium", 0, 19)); // NOI18N
         comboCategoriaPro.setForeground(new java.awt.Color(0, 0, 0));
@@ -116,17 +137,6 @@ public class SubFormProductos extends javax.swing.JPanel {
         btnRegistrarPro.setText("Registrar");
 
         btnModificarPro.setText("Modificar");
-
-        tablePro.setFont(new java.awt.Font("Roboto Medium", 0, 19)); // NOI18N
-        tablePro.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Id", "Producto", "Precio", "Cantidad", "Medida", "Estado"
-            }
-        ));
-        scrollPanePro.setViewportView(tablePro);
 
         javax.swing.GroupLayout panelProductosLayout = new javax.swing.GroupLayout(panelProductos);
         panelProductos.setLayout(panelProductosLayout);
@@ -160,8 +170,8 @@ public class SubFormProductos extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(btnModificarPro, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(scrollPanePro, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addComponent(scrollPaneProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         panelProductosLayout.setVerticalGroup(
             panelProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,15 +206,15 @@ public class SubFormProductos extends javax.swing.JPanel {
                         .addGroup(panelProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(comboCategoriaPro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Categoria))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
                         .addGroup(panelProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnNuevoPro, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnRegistrarPro, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnModificarPro, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(126, 126, 126))
                     .addGroup(panelProductosLayout.createSequentialGroup()
-                        .addComponent(scrollPanePro, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(70, Short.MAX_VALUE))))
+                        .addComponent(scrollPaneProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 592, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -256,7 +266,7 @@ public class SubFormProductos extends javax.swing.JPanel {
     private javax.swing.JLabel pVenta;
     private javax.swing.JPanel panelProductos;
     private javax.swing.JLabel proveedor;
-    private javax.swing.JScrollPane scrollPanePro;
-    private javax.swing.JTable tablePro;
+    private javax.swing.JScrollPane scrollPaneProducto;
+    public rojerusan.RSTableMetro tableProducto;
     // End of variables declaration//GEN-END:variables
 }

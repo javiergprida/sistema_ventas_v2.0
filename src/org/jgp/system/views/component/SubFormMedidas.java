@@ -25,7 +25,7 @@ public class SubFormMedidas extends javax.swing.JPanel {
         btnRegistrarMedida = new org.jgp.system.views.swing.Button();
         btnModificarMedida = new org.jgp.system.views.swing.Button();
         scrollPaneMedida = new javax.swing.JScrollPane();
-        tableMedida = new javax.swing.JTable();
+        tableMedida = new rojerusan.RSTableMetro();
 
         setMaximumSize(new java.awt.Dimension(1180, 750));
         setMinimumSize(new java.awt.Dimension(1180, 750));
@@ -67,7 +67,7 @@ public class SubFormMedidas extends javax.swing.JPanel {
 
         btnModificarMedida.setText("Modificar");
 
-        tableMedida.setFont(new java.awt.Font("Roboto Medium", 0, 19)); // NOI18N
+        tableMedida.setBackground(new java.awt.Color(204, 204, 204));
         tableMedida.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -76,6 +76,16 @@ public class SubFormMedidas extends javax.swing.JPanel {
                 "Id", "Nombre", "Abreviatura", "Estado"
             }
         ));
+        tableMedida.setColorBackgoundHead(new java.awt.Color(102, 115, 255));
+        tableMedida.setColorBordeFilas(new java.awt.Color(204, 204, 204));
+        tableMedida.setColorBordeHead(new java.awt.Color(204, 204, 204));
+        tableMedida.setColorFilasBackgound1(new java.awt.Color(204, 204, 255));
+        tableMedida.setColorFilasBackgound2(new java.awt.Color(153, 153, 255));
+        tableMedida.setColorFilasForeground1(new java.awt.Color(212, 212, 212));
+        tableMedida.setColorFilasForeground2(new java.awt.Color(212, 212, 212));
+        tableMedida.setColorForegroundHead(new java.awt.Color(212, 212, 212));
+        tableMedida.setColorSelBackgound(new java.awt.Color(102, 51, 255));
+        tableMedida.setColorSelForeground(new java.awt.Color(212, 212, 212));
         scrollPaneMedida.setViewportView(tableMedida);
 
         javax.swing.GroupLayout panelMedidaLayout = new javax.swing.GroupLayout(panelMedida);
@@ -101,34 +111,33 @@ public class SubFormMedidas extends javax.swing.JPanel {
                         .addComponent(btnRegistrarMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnModificarMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(scrollPaneMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 708, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(scrollPaneMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelMedidaLayout.setVerticalGroup(
             panelMedidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMedidaLayout.createSequentialGroup()
-                .addGroup(panelMedidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelMedidaLayout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(Nombre))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMedidaLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(boxNombreMedida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
                 .addGroup(panelMedidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(boxAbrevMedida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Abreviatura))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panelMedidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnNuevoMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRegistrarMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnModificarMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(scrollPaneMedida, javax.swing.GroupLayout.DEFAULT_SIZE, 623, Short.MAX_VALUE)
+                    .addGroup(panelMedidaLayout.createSequentialGroup()
+                        .addGroup(panelMedidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelMedidaLayout.createSequentialGroup()
+                                .addGap(32, 32, 32)
+                                .addComponent(Nombre))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMedidaLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(boxNombreMedida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(panelMedidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(boxAbrevMedida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Abreviatura))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(panelMedidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnNuevoMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnRegistrarMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnModificarMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(75, 75, 75))
-            .addGroup(panelMedidaLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(scrollPaneMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 608, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(67, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -138,7 +147,7 @@ public class SubFormMedidas extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 179, Short.MAX_VALUE)
                 .addComponent(labelForm, javax.swing.GroupLayout.PREFERRED_SIZE, 920, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(panelMedida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -172,6 +181,6 @@ public class SubFormMedidas extends javax.swing.JPanel {
     private javax.swing.JLabel labelForm;
     private javax.swing.JPanel panelMedida;
     private javax.swing.JScrollPane scrollPaneMedida;
-    private javax.swing.JTable tableMedida;
+    public rojerusan.RSTableMetro tableMedida;
     // End of variables declaration//GEN-END:variables
 }

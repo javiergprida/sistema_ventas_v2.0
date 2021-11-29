@@ -30,14 +30,14 @@ public class SubFormVenta extends javax.swing.JPanel {
         Cliente = new javax.swing.JLabel();
         comboClienteVenta = new javax.swing.JComboBox<>();
         btnNuevaVenta = new org.jgp.system.views.swing.Button();
-        scrollPaneVenta = new javax.swing.JScrollPane();
-        tableVenta = new javax.swing.JTable();
         pagarcon = new javax.swing.JLabel();
         boxPago = new javax.swing.JTextField();
         Cambio = new javax.swing.JLabel();
         boxCambio = new javax.swing.JTextField();
         pagar = new javax.swing.JLabel();
         TotalPagar = new javax.swing.JLabel();
+        scrollPaneVenta = new javax.swing.JScrollPane();
+        tableVenta = new rojerusan.RSTableMetro();
 
         setMaximumSize(new java.awt.Dimension(1180, 750));
         setMinimumSize(new java.awt.Dimension(1180, 750));
@@ -107,17 +107,6 @@ public class SubFormVenta extends javax.swing.JPanel {
 
         btnNuevaVenta.setText("Generar");
 
-        tableVenta.setFont(new java.awt.Font("Roboto Medium", 0, 19)); // NOI18N
-        tableVenta.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Id", "Descripcion", "Cantidad", "Precio", "Total"
-            }
-        ));
-        scrollPaneVenta.setViewportView(tableVenta);
-
         pagarcon.setFont(new java.awt.Font("Roboto Medium", 0, 19)); // NOI18N
         pagarcon.setText("Pagar Con");
 
@@ -135,14 +124,66 @@ public class SubFormVenta extends javax.swing.JPanel {
         TotalPagar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         TotalPagar.setText("-----");
 
+        tableVenta.setBackground(new java.awt.Color(204, 204, 204));
+        tableVenta.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Id", "Descripcion", "Cantidad", "Precio", "Total"
+            }
+        ));
+        tableVenta.setColorBackgoundHead(new java.awt.Color(102, 115, 255));
+        tableVenta.setColorBordeFilas(new java.awt.Color(204, 204, 204));
+        tableVenta.setColorBordeHead(new java.awt.Color(204, 204, 204));
+        tableVenta.setColorFilasBackgound1(new java.awt.Color(204, 204, 255));
+        tableVenta.setColorFilasBackgound2(new java.awt.Color(153, 153, 255));
+        tableVenta.setColorFilasForeground1(new java.awt.Color(212, 212, 212));
+        tableVenta.setColorFilasForeground2(new java.awt.Color(212, 212, 212));
+        tableVenta.setColorForegroundHead(new java.awt.Color(212, 212, 212));
+        tableVenta.setColorSelBackgound(new java.awt.Color(102, 51, 255));
+        tableVenta.setColorSelForeground(new java.awt.Color(212, 212, 212));
+        scrollPaneVenta.setViewportView(tableVenta);
+
         javax.swing.GroupLayout panelVentaLayout = new javax.swing.GroupLayout(panelVenta);
         panelVenta.setLayout(panelVentaLayout);
         panelVentaLayout.setHorizontalGroup(
             panelVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelVentaLayout.createSequentialGroup()
-                .addGroup(panelVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap(26, Short.MAX_VALUE)
+                .addGroup(panelVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(panelVentaLayout.createSequentialGroup()
-                        .addGap(354, 354, 354)
+                        .addComponent(Cliente)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(comboClienteVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnNuevaVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelVentaLayout.createSequentialGroup()
+                        .addComponent(Codigo)
+                        .addGap(18, 18, 18)
+                        .addComponent(boxCodigoVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Nombre)
+                        .addGap(18, 18, 18)
+                        .addComponent(boxProductoVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(Stock)
+                        .addGap(18, 18, 18)
+                        .addComponent(boxStockPro, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Cantidad)
+                        .addGap(18, 18, 18)
+                        .addComponent(boxCantidadVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Total)
+                        .addGap(18, 18, 18)
+                        .addComponent(boxTotalVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(110, Short.MAX_VALUE))
+            .addGroup(panelVentaLayout.createSequentialGroup()
+                .addGap(81, 81, 81)
+                .addGroup(panelVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(scrollPaneVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 1047, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelVentaLayout.createSequentialGroup()
                         .addComponent(pagarcon)
                         .addGap(18, 18, 18)
                         .addComponent(boxPago, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -153,40 +194,7 @@ public class SubFormVenta extends javax.swing.JPanel {
                         .addGap(57, 57, 57)
                         .addComponent(pagar)
                         .addGap(18, 18, 18)
-                        .addComponent(TotalPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelVentaLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(panelVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(scrollPaneVenta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 1103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panelVentaLayout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addGroup(panelVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(panelVentaLayout.createSequentialGroup()
-                                        .addComponent(Cliente)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(comboClienteVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btnNuevaVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(panelVentaLayout.createSequentialGroup()
-                                        .addComponent(Codigo)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(boxCodigoVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(Nombre)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(boxProductoVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(Stock)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(boxStockPro, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(Cantidad)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(boxCantidadVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(Total)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(boxTotalVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                        .addComponent(TotalPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
         panelVentaLayout.setVerticalGroup(
@@ -210,9 +218,9 @@ public class SubFormVenta extends javax.swing.JPanel {
                         .addComponent(Cliente)
                         .addComponent(comboClienteVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnNuevaVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollPaneVenta, javax.swing.GroupLayout.DEFAULT_SIZE, 481, Short.MAX_VALUE)
-                .addGap(24, 24, 24)
+                .addGap(18, 18, 18)
+                .addComponent(scrollPaneVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addGroup(panelVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(boxPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(boxCambio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -277,6 +285,6 @@ public class SubFormVenta extends javax.swing.JPanel {
     private javax.swing.JLabel pagarcon;
     private javax.swing.JPanel panelVenta;
     private javax.swing.JScrollPane scrollPaneVenta;
-    private javax.swing.JTable tableVenta;
+    public rojerusan.RSTableMetro tableVenta;
     // End of variables declaration//GEN-END:variables
 }

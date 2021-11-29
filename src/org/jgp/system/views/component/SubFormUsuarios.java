@@ -45,8 +45,6 @@ public class SubFormUsuarios extends javax.swing.JPanel {
         btnNuevoUsers = new org.jgp.system.views.swing.Button();
         btnRegistrarUsers = new org.jgp.system.views.swing.Button();
         btnModificarUsers = new org.jgp.system.views.swing.Button();
-        scrollPaneUsers = new javax.swing.JScrollPane();
-        tableUsers = new javax.swing.JTable();
         checkBoxShow = new javax.swing.JCheckBox();
         iconsuser = new javax.swing.JLabel();
         boxIdUsers = new javax.swing.JTextField();
@@ -55,6 +53,8 @@ public class SubFormUsuarios extends javax.swing.JPanel {
         btnBuscar = new javax.swing.JLabel();
         panelPagination = new javax.swing.JPanel();
         pagination = new org.jgp.system.views.swing.slideshow.Pagination();
+        scrollPaneUsers = new javax.swing.JScrollPane();
+        tableUsers = new rojerusan.RSTableMetro();
 
         popEliminarUsers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/jgp/system/img/eliminar.png"))); // NOI18N
         popEliminarUsers.setText("Eliminar Usuario");
@@ -167,26 +167,6 @@ public class SubFormUsuarios extends javax.swing.JPanel {
         btnModificarUsers.setText("Modificar");
         panelUsers.add(btnModificarUsers, new org.netbeans.lib.awtextra.AbsoluteConstraints(299, 571, 120, 54));
 
-        scrollPaneUsers.setFont(new java.awt.Font("Roboto Light", 0, 19)); // NOI18N
-
-        tableUsers.setBackground(new java.awt.Color(255, 255, 255));
-        tableUsers.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        tableUsers.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Id", "Usuario", "Nombre", "Email", "Rol", "Cash", "Estado"
-            }
-        ));
-        tableUsers.setComponentPopupMenu(menuPopUsers);
-        tableUsers.setRowHeight(35);
-        tableUsers.setSelectionBackground(new java.awt.Color(153, 153, 255));
-        tableUsers.setSelectionForeground(new java.awt.Color(255, 255, 255));
-        scrollPaneUsers.setViewportView(tableUsers);
-
-        panelUsers.add(scrollPaneUsers, new org.netbeans.lib.awtextra.AbsoluteConstraints(437, 122, 720, 400));
-
         checkBoxShow.setBackground(new java.awt.Color(102, 115, 255));
         checkBoxShow.setFont(new java.awt.Font("Roboto Black", 0, 19)); // NOI18N
         checkBoxShow.setForeground(new java.awt.Color(255, 255, 255));
@@ -253,6 +233,38 @@ public class SubFormUsuarios extends javax.swing.JPanel {
         );
 
         panelUsers.add(panelPagination, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 560, 640, -1));
+
+        tableUsers.setBackground(new java.awt.Color(204, 204, 204));
+        tableUsers.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Id", "Usuario", "Nombre", "Email", "Cash", "Rol", "Estado"
+            }
+        ));
+        tableUsers.setColorBackgoundHead(new java.awt.Color(102, 115, 255));
+        tableUsers.setColorBordeFilas(new java.awt.Color(204, 204, 204));
+        tableUsers.setColorBordeHead(new java.awt.Color(204, 204, 204));
+        tableUsers.setColorFilasBackgound1(new java.awt.Color(204, 204, 255));
+        tableUsers.setColorFilasBackgound2(new java.awt.Color(153, 153, 255));
+        tableUsers.setColorFilasForeground1(new java.awt.Color(212, 212, 212));
+        tableUsers.setColorFilasForeground2(new java.awt.Color(212, 212, 212));
+        tableUsers.setColorForegroundHead(new java.awt.Color(212, 212, 212));
+        tableUsers.setColorSelBackgound(new java.awt.Color(102, 51, 255));
+        tableUsers.setColorSelForeground(new java.awt.Color(212, 212, 212));
+        scrollPaneUsers.setViewportView(tableUsers);
+        if (tableUsers.getColumnModel().getColumnCount() > 0) {
+            tableUsers.getColumnModel().getColumn(0).setPreferredWidth(3);
+            tableUsers.getColumnModel().getColumn(1).setPreferredWidth(30);
+            tableUsers.getColumnModel().getColumn(2).setPreferredWidth(100);
+            tableUsers.getColumnModel().getColumn(3).setPreferredWidth(140);
+            tableUsers.getColumnModel().getColumn(4).setPreferredWidth(20);
+            tableUsers.getColumnModel().getColumn(5).setPreferredWidth(60);
+            tableUsers.getColumnModel().getColumn(6).setPreferredWidth(30);
+        }
+
+        panelUsers.add(scrollPaneUsers, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 120, 710, 420));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -344,7 +356,7 @@ public class SubFormUsuarios extends javax.swing.JPanel {
     public javax.swing.JMenuItem popReingresarUsers;
     private javax.swing.JLabel rePassword;
     private javax.swing.JScrollPane scrollPaneUsers;
-    public javax.swing.JTable tableUsers;
+    public rojerusan.RSTableMetro tableUsers;
     private javax.swing.JLabel usuario;
     // End of variables declaration//GEN-END:variables
 }

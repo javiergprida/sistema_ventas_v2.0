@@ -1,6 +1,5 @@
 package org.jgp.system.controller;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -10,7 +9,7 @@ import java.awt.event.MouseListener;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
+
 import org.jgp.system.models.Table;
 import org.jgp.system.models.Users;
 import org.jgp.system.models.UsersDao;
@@ -151,10 +150,6 @@ public class UsersController implements ActionListener, MouseListener, KeyListen
         }
 
         sfuv.tableUsers.setModel(model);
-        JTableHeader header = sfuv.tableUsers.getTableHeader();
-        header.setOpaque(false);
-        header.setBackground(new Color(204,204,255));
-        header.setForeground(new Color(0,0,0));
 
     }
 
@@ -217,21 +212,20 @@ public class UsersController implements ActionListener, MouseListener, KeyListen
 
     @Override
     public void keyTyped(KeyEvent e) {
-       
+
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
-        
+
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        if(e.getSource() == sfuv.boxBuscarUser){
+        if (e.getSource() == sfuv.boxBuscarUser) {
             clearUsersTable();
-             listarUsers();
-            
-        
+            listarUsers();
+
         }
     }
 

@@ -16,11 +16,10 @@ public class SubFormDetalleCompras extends javax.swing.JPanel {
 
         labelForm = new javax.swing.JLabel();
         btnBack = new org.jgp.system.views.swing.Button();
-        panelDetalleCompra = new javax.swing.JPanel();
-        btnDetalleCompra = new org.jgp.system.views.swing.Button();
-        scrollPaneDetallecompra = new javax.swing.JScrollPane();
-        tableDetallecompra = new javax.swing.JTable();
+        scrollPaneDetalleCompra = new javax.swing.JScrollPane();
+        tabledetalleCompra = new rojerusan.RSTableMetro();
 
+        setBackground(new java.awt.Color(102, 115, 255));
         setMaximumSize(new java.awt.Dimension(1180, 750));
         setMinimumSize(new java.awt.Dimension(1180, 750));
         setPreferredSize(new java.awt.Dimension(1180, 750));
@@ -36,13 +35,8 @@ public class SubFormDetalleCompras extends javax.swing.JPanel {
             }
         });
 
-        panelDetalleCompra.setBackground(new java.awt.Color(102, 115, 255));
-        panelDetalleCompra.setForeground(new java.awt.Color(212, 212, 212));
-
-        btnDetalleCompra.setText("Generar");
-
-        tableDetallecompra.setFont(new java.awt.Font("Roboto Medium", 0, 19)); // NOI18N
-        tableDetallecompra.setModel(new javax.swing.table.DefaultTableModel(
+        tabledetalleCompra.setBackground(new java.awt.Color(204, 204, 204));
+        tabledetalleCompra.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -50,30 +44,17 @@ public class SubFormDetalleCompras extends javax.swing.JPanel {
                 "Id", "Cliente", "Total", "Fecha"
             }
         ));
-        scrollPaneDetallecompra.setViewportView(tableDetallecompra);
-
-        javax.swing.GroupLayout panelDetalleCompraLayout = new javax.swing.GroupLayout(panelDetalleCompra);
-        panelDetalleCompra.setLayout(panelDetalleCompraLayout);
-        panelDetalleCompraLayout.setHorizontalGroup(
-            panelDetalleCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelDetalleCompraLayout.createSequentialGroup()
-                .addGap(97, 97, 97)
-                .addComponent(btnDetalleCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDetalleCompraLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(scrollPaneDetallecompra, javax.swing.GroupLayout.PREFERRED_SIZE, 1108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55))
-        );
-        panelDetalleCompraLayout.setVerticalGroup(
-            panelDetalleCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDetalleCompraLayout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(scrollPaneDetallecompra, javax.swing.GroupLayout.DEFAULT_SIZE, 570, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(btnDetalleCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12))
-        );
+        tabledetalleCompra.setColorBackgoundHead(new java.awt.Color(102, 115, 255));
+        tabledetalleCompra.setColorBordeFilas(new java.awt.Color(204, 204, 204));
+        tabledetalleCompra.setColorBordeHead(new java.awt.Color(204, 204, 204));
+        tabledetalleCompra.setColorFilasBackgound1(new java.awt.Color(204, 204, 255));
+        tabledetalleCompra.setColorFilasBackgound2(new java.awt.Color(153, 153, 255));
+        tabledetalleCompra.setColorFilasForeground1(new java.awt.Color(212, 212, 212));
+        tabledetalleCompra.setColorFilasForeground2(new java.awt.Color(212, 212, 212));
+        tabledetalleCompra.setColorForegroundHead(new java.awt.Color(212, 212, 212));
+        tabledetalleCompra.setColorSelBackgound(new java.awt.Color(102, 51, 255));
+        tabledetalleCompra.setColorSelForeground(new java.awt.Color(212, 212, 212));
+        scrollPaneDetalleCompra.setViewportView(tabledetalleCompra);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -82,9 +63,14 @@ public class SubFormDetalleCompras extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 190, Short.MAX_VALUE)
-                .addComponent(labelForm, javax.swing.GroupLayout.PREFERRED_SIZE, 922, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(panelDetalleCompra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(labelForm, javax.swing.GroupLayout.PREFERRED_SIZE, 922, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(159, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(54, Short.MAX_VALUE)
+                    .addComponent(scrollPaneDetalleCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 1009, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(117, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -94,8 +80,12 @@ public class SubFormDetalleCompras extends javax.swing.JPanel {
                         .addContainerGap()
                         .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(labelForm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelDetalleCompra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(704, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(88, Short.MAX_VALUE)
+                    .addComponent(scrollPaneDetalleCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(127, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -106,10 +96,8 @@ public class SubFormDetalleCompras extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.jgp.system.views.swing.Button btnBack;
-    private org.jgp.system.views.swing.Button btnDetalleCompra;
     private javax.swing.JLabel labelForm;
-    private javax.swing.JPanel panelDetalleCompra;
-    private javax.swing.JScrollPane scrollPaneDetallecompra;
-    private javax.swing.JTable tableDetallecompra;
+    private javax.swing.JScrollPane scrollPaneDetalleCompra;
+    public rojerusan.RSTableMetro tabledetalleCompra;
     // End of variables declaration//GEN-END:variables
 }

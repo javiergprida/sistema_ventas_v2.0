@@ -28,14 +28,14 @@ public class SubFormCompra extends javax.swing.JPanel {
         Proveedor = new javax.swing.JLabel();
         comboProveedorCompra = new javax.swing.JComboBox<>();
         btnNuevaCompra = new org.jgp.system.views.swing.Button();
-        scrollPanecompra = new javax.swing.JScrollPane();
-        tableCompra = new javax.swing.JTable();
         pagarcon2 = new javax.swing.JLabel();
         boxPago2 = new javax.swing.JTextField();
         Cambio2 = new javax.swing.JLabel();
         boxCambio2 = new javax.swing.JTextField();
         pagar2 = new javax.swing.JLabel();
         TotalPagar2 = new javax.swing.JLabel();
+        scrollPaneCompra = new javax.swing.JScrollPane();
+        tableCompra = new rojerusan.RSTableMetro();
 
         setMaximumSize(new java.awt.Dimension(1180, 750));
         setMinimumSize(new java.awt.Dimension(1180, 750));
@@ -97,17 +97,6 @@ public class SubFormCompra extends javax.swing.JPanel {
 
         btnNuevaCompra.setText("Generar");
 
-        tableCompra.setFont(new java.awt.Font("Roboto Medium", 0, 19)); // NOI18N
-        tableCompra.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Id", "Descripcion", "Cantidad", "Precio", "Total"
-            }
-        ));
-        scrollPanecompra.setViewportView(tableCompra);
-
         pagarcon2.setFont(new java.awt.Font("Roboto Medium", 0, 19)); // NOI18N
         pagarcon2.setText("Pagar Con");
 
@@ -129,14 +118,31 @@ public class SubFormCompra extends javax.swing.JPanel {
         TotalPagar2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         TotalPagar2.setText("-----");
 
+        tableCompra.setBackground(new java.awt.Color(204, 204, 204));
+        tableCompra.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Id", "Descripcion", "Cantidad", "Precio", "Total"
+            }
+        ));
+        tableCompra.setColorBackgoundHead(new java.awt.Color(102, 115, 255));
+        tableCompra.setColorBordeFilas(new java.awt.Color(204, 204, 204));
+        tableCompra.setColorBordeHead(new java.awt.Color(204, 204, 204));
+        tableCompra.setColorFilasBackgound1(new java.awt.Color(204, 204, 255));
+        tableCompra.setColorFilasBackgound2(new java.awt.Color(153, 153, 255));
+        tableCompra.setColorFilasForeground1(new java.awt.Color(212, 212, 212));
+        tableCompra.setColorFilasForeground2(new java.awt.Color(212, 212, 212));
+        tableCompra.setColorForegroundHead(new java.awt.Color(212, 212, 212));
+        tableCompra.setColorSelBackgound(new java.awt.Color(102, 51, 255));
+        tableCompra.setColorSelForeground(new java.awt.Color(212, 212, 212));
+        scrollPaneCompra.setViewportView(tableCompra);
+
         javax.swing.GroupLayout panelCompraLayout = new javax.swing.GroupLayout(panelCompra);
         panelCompra.setLayout(panelCompraLayout);
         panelCompraLayout.setHorizontalGroup(
             panelCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCompraLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(scrollPanecompra, javax.swing.GroupLayout.PREFERRED_SIZE, 1177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(panelCompraLayout.createSequentialGroup()
                 .addGap(49, 49, 49)
                 .addGroup(panelCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,7 +162,7 @@ public class SubFormCompra extends javax.swing.JPanel {
                         .addComponent(Total2)
                         .addGap(18, 18, 18)
                         .addComponent(boxTotalcompra, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(262, Short.MAX_VALUE))
                     .addGroup(panelCompraLayout.createSequentialGroup()
                         .addComponent(Proveedor)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -178,6 +184,11 @@ public class SubFormCompra extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(TotalPagar2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(117, 117, 117))
+            .addGroup(panelCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCompraLayout.createSequentialGroup()
+                    .addContainerGap(49, Short.MAX_VALUE)
+                    .addComponent(scrollPaneCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 1004, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(127, Short.MAX_VALUE)))
         );
         panelCompraLayout.setVerticalGroup(
             panelCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -197,9 +208,7 @@ public class SubFormCompra extends javax.swing.JPanel {
                     .addComponent(Proveedor)
                     .addComponent(comboProveedorCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNuevaCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(scrollPanecompra, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 498, Short.MAX_VALUE)
                 .addGroup(panelCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(boxPago2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(boxCambio2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -208,6 +217,11 @@ public class SubFormCompra extends javax.swing.JPanel {
                     .addComponent(pagarcon2)
                     .addComponent(Cambio2))
                 .addGap(46, 46, 46))
+            .addGroup(panelCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCompraLayout.createSequentialGroup()
+                    .addContainerGap(140, Short.MAX_VALUE)
+                    .addComponent(scrollPaneCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(124, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -260,7 +274,7 @@ public class SubFormCompra extends javax.swing.JPanel {
     private javax.swing.JLabel pagar2;
     private javax.swing.JLabel pagarcon2;
     private javax.swing.JPanel panelCompra;
-    private javax.swing.JScrollPane scrollPanecompra;
-    private javax.swing.JTable tableCompra;
+    private javax.swing.JScrollPane scrollPaneCompra;
+    public rojerusan.RSTableMetro tableCompra;
     // End of variables declaration//GEN-END:variables
 }

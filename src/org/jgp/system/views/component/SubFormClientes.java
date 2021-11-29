@@ -25,10 +25,10 @@ public class SubFormClientes extends javax.swing.JPanel {
         btnNuevoCli = new org.jgp.system.views.swing.Button();
         btnRegistrarCli = new org.jgp.system.views.swing.Button();
         btnModificarCli = new org.jgp.system.views.swing.Button();
-        scrollPaneCli = new javax.swing.JScrollPane();
-        tableCli = new javax.swing.JTable();
         scrollPaneDireccionCli = new javax.swing.JScrollPane();
         jTextPane1 = new javax.swing.JTextPane();
+        scrollPaneCliente = new javax.swing.JScrollPane();
+        tableCliente = new rojerusan.RSTableMetro();
 
         setMaximumSize(new java.awt.Dimension(1180, 750));
         setMinimumSize(new java.awt.Dimension(1180, 750));
@@ -72,9 +72,13 @@ public class SubFormClientes extends javax.swing.JPanel {
 
         btnModificarCli.setText("Modificar");
 
-        tableCli.setFont(new java.awt.Font("Roboto Medium", 0, 19)); // NOI18N
-        tableCli.setForeground(new java.awt.Color(255, 255, 255));
-        tableCli.setModel(new javax.swing.table.DefaultTableModel(
+        jTextPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jTextPane1.setFont(new java.awt.Font("Roboto Medium", 0, 19)); // NOI18N
+        jTextPane1.setForeground(new java.awt.Color(0, 0, 0));
+        scrollPaneDireccionCli.setViewportView(jTextPane1);
+
+        tableCliente.setBackground(new java.awt.Color(204, 204, 204));
+        tableCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -82,12 +86,17 @@ public class SubFormClientes extends javax.swing.JPanel {
                 "Id", "Nombre", "Telefono", "Direccion"
             }
         ));
-        scrollPaneCli.setViewportView(tableCli);
-
-        jTextPane1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextPane1.setFont(new java.awt.Font("Roboto Medium", 0, 19)); // NOI18N
-        jTextPane1.setForeground(new java.awt.Color(0, 0, 0));
-        scrollPaneDireccionCli.setViewportView(jTextPane1);
+        tableCliente.setColorBackgoundHead(new java.awt.Color(102, 115, 255));
+        tableCliente.setColorBordeFilas(new java.awt.Color(204, 204, 204));
+        tableCliente.setColorBordeHead(new java.awt.Color(204, 204, 204));
+        tableCliente.setColorFilasBackgound1(new java.awt.Color(204, 204, 255));
+        tableCliente.setColorFilasBackgound2(new java.awt.Color(153, 153, 255));
+        tableCliente.setColorFilasForeground1(new java.awt.Color(212, 212, 212));
+        tableCliente.setColorFilasForeground2(new java.awt.Color(212, 212, 212));
+        tableCliente.setColorForegroundHead(new java.awt.Color(212, 212, 212));
+        tableCliente.setColorSelBackgound(new java.awt.Color(102, 51, 255));
+        tableCliente.setColorSelForeground(new java.awt.Color(212, 212, 212));
+        scrollPaneCliente.setViewportView(tableCliente);
 
         javax.swing.GroupLayout panelClientesLayout = new javax.swing.GroupLayout(panelClientes);
         panelClientes.setLayout(panelClientesLayout);
@@ -107,49 +116,48 @@ public class SubFormClientes extends javax.swing.JPanel {
                                 .addGroup(panelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(boxTelefonoCli)
                                     .addGroup(panelClientesLayout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addGap(0, 33, Short.MAX_VALUE)
                                         .addComponent(boxNombreCli, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(panelClientesLayout.createSequentialGroup()
                                 .addGap(12, 12, 12)
                                 .addComponent(scrollPaneDireccionCli)))
-                        .addGap(33, 33, 33))
+                        .addGap(40, 40, 40))
                     .addGroup(panelClientesLayout.createSequentialGroup()
                         .addComponent(btnNuevoCli, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnRegistrarCli, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnModificarCli, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)))
-                .addComponent(scrollPaneCli, javax.swing.GroupLayout.PREFERRED_SIZE, 701, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(scrollPaneCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
         );
         panelClientesLayout.setVerticalGroup(
             panelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelClientesLayout.createSequentialGroup()
-                .addGroup(panelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelClientesLayout.createSequentialGroup()
-                        .addGap(490, 490, 490)
-                        .addGroup(panelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnRegistrarCli, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnNuevoCli, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnModificarCli, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(panelClientesLayout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(panelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(scrollPaneCli, javax.swing.GroupLayout.PREFERRED_SIZE, 544, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panelClientesLayout.createSequentialGroup()
-                                .addGroup(panelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(NombreCli)
-                                    .addComponent(boxNombreCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(panelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(telefono)
-                                    .addComponent(boxTelefonoCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(panelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(scrollPaneDireccionCli, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Direccion))))))
-                .addContainerGap(126, Short.MAX_VALUE))
+                .addGroup(panelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(scrollPaneCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 516, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panelClientesLayout.createSequentialGroup()
+                            .addGap(490, 490, 490)
+                            .addGroup(panelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(btnRegistrarCli, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnNuevoCli, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnModificarCli, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(panelClientesLayout.createSequentialGroup()
+                            .addGap(28, 28, 28)
+                            .addGroup(panelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(NombreCli)
+                                .addComponent(boxNombreCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)
+                            .addGroup(panelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(telefono)
+                                .addComponent(boxTelefonoCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)
+                            .addGroup(panelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(scrollPaneDireccionCli, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Direccion)))))
+                .addContainerGap(154, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -194,9 +202,9 @@ public class SubFormClientes extends javax.swing.JPanel {
     private javax.swing.JTextPane jTextPane1;
     private javax.swing.JLabel labelForm;
     private javax.swing.JPanel panelClientes;
-    private javax.swing.JScrollPane scrollPaneCli;
+    private javax.swing.JScrollPane scrollPaneCliente;
     private javax.swing.JScrollPane scrollPaneDireccionCli;
-    private javax.swing.JTable tableCli;
+    public rojerusan.RSTableMetro tableCliente;
     private javax.swing.JLabel telefono;
     // End of variables declaration//GEN-END:variables
 }
