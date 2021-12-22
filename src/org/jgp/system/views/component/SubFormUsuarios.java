@@ -15,7 +15,7 @@ public class SubFormUsuarios extends javax.swing.JPanel {
         initComponents();
         setOpaque(false);
         labelForm.setText(name);
-        boxIdUsers.setVisible(true);
+        boxIdUsers.setVisible(false);
         UsersController users = new UsersController(us, usDao,this);
     }
 

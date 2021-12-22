@@ -33,7 +33,6 @@ public class SubFormClientes extends javax.swing.JPanel {
         telefono = new javax.swing.JLabel();
         boxTelefonoCli = new javax.swing.JTextField();
         Direccion = new javax.swing.JLabel();
-        btnNuevoCli = new org.jgp.system.views.swing.Button();
         btnRegistrarCli = new org.jgp.system.views.swing.Button();
         btnModificarCli = new org.jgp.system.views.swing.Button();
         scrollPaneDireccionCli = new javax.swing.JScrollPane();
@@ -89,8 +88,6 @@ public class SubFormClientes extends javax.swing.JPanel {
         Direccion.setForeground(new java.awt.Color(212, 212, 212));
         Direccion.setText("Direccion");
 
-        btnNuevoCli.setText("Nuevo");
-
         btnRegistrarCli.setText("Registrar");
 
         btnModificarCli.setText("Modificar");
@@ -119,8 +116,10 @@ public class SubFormClientes extends javax.swing.JPanel {
         tableCliente.setColorForegroundHead(new java.awt.Color(212, 212, 212));
         tableCliente.setColorSelBackgound(new java.awt.Color(102, 51, 255));
         tableCliente.setColorSelForeground(new java.awt.Color(212, 212, 212));
+        tableCliente.setColumnSelectionAllowed(true);
         tableCliente.setComponentPopupMenu(menuPopCliente);
         scrollPaneCliente.setViewportView(tableCliente);
+        tableCliente.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         if (tableCliente.getColumnModel().getColumnCount() > 0) {
             tableCliente.getColumnModel().getColumn(0).setPreferredWidth(10);
             tableCliente.getColumnModel().getColumn(1).setPreferredWidth(80);
@@ -167,24 +166,23 @@ public class SubFormClientes extends javax.swing.JPanel {
         panelClientesLayout.setHorizontalGroup(
             panelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelClientesLayout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
-                .addGroup(panelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelClientesLayout.createSequentialGroup()
-                        .addComponent(btnNuevoCli, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnRegistrarCli, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnModificarCli, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelClientesLayout.createSequentialGroup()
+                        .addContainerGap(43, Short.MAX_VALUE)
                         .addGroup(panelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(NombreCli)
                             .addComponent(telefono)
                             .addComponent(Direccion))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                         .addGroup(panelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(boxTelefonoCli, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(boxNombreCli, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
-                            .addComponent(scrollPaneDireccionCli))))
+                            .addComponent(scrollPaneDireccionCli)))
+                    .addGroup(panelClientesLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnRegistrarCli, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(btnModificarCli, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(32, 32, 32)
                 .addGroup(panelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelClientesLayout.createSequentialGroup()
@@ -226,7 +224,6 @@ public class SubFormClientes extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(panelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnRegistrarCli, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnNuevoCli, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnModificarCli, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(scrollPaneCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(83, Short.MAX_VALUE))
@@ -281,7 +278,6 @@ public class SubFormClientes extends javax.swing.JPanel {
     private org.jgp.system.views.swing.Button btnBack;
     public javax.swing.JLabel btnBuscarCli;
     public org.jgp.system.views.swing.Button btnModificarCli;
-    public org.jgp.system.views.swing.Button btnNuevoCli;
     public org.jgp.system.views.swing.Button btnRegistrarCli;
     private javax.swing.JLabel labelForm;
     public javax.swing.JPopupMenu menuPopCliente;

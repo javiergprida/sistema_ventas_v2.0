@@ -10,21 +10,22 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 
-public class ClientesDao {
+public class MedidasDao {
     
-     connection cn = new connection();
+    connection cn = new connection();
     Connection con;
     PreparedStatement ps;
     ResultSet rs;
     
-     public boolean Registrar(Clientes cliente) {
-        String sql = "insert into clientes(nombre, telefono ,direccion) values (?,?,?)";
+    
+    public boolean Registrar(Medidas medida) {
+        String sql = "insert into medidas(nombre, abreviatura) values (?,?)";
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);
-            ps.setString(1, cliente.getNombre());
-            ps.setString(2, cliente.getTelefono());
-            ps.setString(3, cliente.getDireccion());
+            ps.setString(1, medida.getNombre());
+            ps.setString(2, medida.getAbreviatura());
+            
             
             ps.execute();
             return true;
@@ -36,11 +37,11 @@ public class ClientesDao {
 
     }
      
-       public List ListarClientes(String valor) {
+       public List ListarMedidas(String valor) {
 
-        List<Clientes> listaClientes = new ArrayList();
-        String sql = "select * from clientes order by status asc";
-        String buscar ="select * from clientes where nombre like '%"+valor+"%'  OR  telefono like '%"+valor+"%' ";
+        List<Medidas> listaMedidas = new ArrayList();
+        String sql = "select * from medidas order by status asc";
+        String buscar ="select * from medidas where nombre like '%"+valor+"%' ";
         try {
             con = cn.getConnection();
             if(valor.equalsIgnoreCase(" ")){
@@ -52,31 +53,29 @@ public class ClientesDao {
             
             }
             while (rs.next()) {
-                Clientes cliente = new Clientes();
-                cliente.setId(rs.getInt("id"));
-                cliente.setNombre(rs.getString("nombre"));
-                cliente.setTelefono(rs.getString("telefono"));
-                cliente.setDireccion(rs.getString("direccion"));
-                cliente.setStatus(rs.getString("status"));
-                listaClientes.add(cliente);
+                Medidas medida = new Medidas();
+                medida.setId(rs.getInt("id"));
+                medida.setNombre(rs.getString("nombre"));
+                medida.setAbreviatura(rs.getString("abreviatura"));
+                medida.setStatus(rs.getString("status"));
+                listaMedidas.add(medida);
             }
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error: " + e);
 
         }
-        return listaClientes;
+        return listaMedidas;
     }
 
-    public boolean Modificarr(Clientes cliente) {
-        String sql = "update clientes set nombre=?, telefono=?, direccion=? where id=?";
+    public boolean Modificarr(Medidas medida) {
+        String sql = "update medidas set nombre=?, abreviatura=? where id=?";
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);
-             ps.setString(1, cliente.getNombre());
-            ps.setString(2, cliente.getTelefono());
-            ps.setString(3, cliente.getDireccion());
-            ps.setInt(4, cliente.getId());
+             ps.setString(1, medida.getNombre());
+            ps.setString(2, medida.getAbreviatura());
+            ps.setInt(3, medida.getId());
             ps.execute();
             return true;
 
@@ -89,7 +88,7 @@ public class ClientesDao {
 
     public boolean Accion(String status, int id) {
 
-        String sql = "update clientes set status=? where id=?";
+        String sql = "update medidas set status=? where id=?";
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);

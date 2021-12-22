@@ -12,7 +12,6 @@ import javax.swing.table.DefaultTableModel;
 import org.jgp.system.models.Clientes;
 import org.jgp.system.models.ClientesDao;
 import org.jgp.system.models.Table;
-import org.jgp.system.models.Users;
 import org.jgp.system.views.component.SubFormClientes;
 
 public class ClientesController implements ActionListener, MouseListener, KeyListener {
@@ -27,12 +26,12 @@ public class ClientesController implements ActionListener, MouseListener, KeyLis
         this.clienteD = clienteD;
         this.sfc = sfc;
         this.sfc.tableCliente.addMouseListener(this);
-        this.sfc.btnNuevoCli.addActionListener(this);
         this.sfc.btnRegistrarCli.addActionListener(this);
         this.sfc.btnModificarCli.addActionListener(this);
         this.sfc.popEliminarCliente.addActionListener(this);
         this.sfc.popReingresarCliente.addActionListener(this);
         this.sfc.boxBuscarCli.addKeyListener(this);
+        clearBoxCliente();
         listarCliente();
 
     }
@@ -64,7 +63,9 @@ public class ClientesController implements ActionListener, MouseListener, KeyLis
 
             }
 
-        }else if (e.getSource() == sfc.btnModificarCli) {
+        } else if (e.getSource() == sfc.btnModificarCli) {
+            sfc.btnRegistrarCli.enableInputMethods(false);
+            JOptionPane.showMessageDialog(null, "No puedes crear el mismo cliente 2 veces");
             if (sfc.boxNombreCli.getText().equals("")
                     || sfc.boxTelefonoCli.getText().equals("")
                     || sfc.boxDireccionCli.getText().equals("")) {
@@ -88,8 +89,6 @@ public class ClientesController implements ActionListener, MouseListener, KeyLis
                 }
 
             }
-
-            
 
         } else if (e.getSource() == sfc.popEliminarCliente) {
             if (sfc.boxIdCli.getText().equals("")) {
@@ -118,7 +117,7 @@ public class ClientesController implements ActionListener, MouseListener, KeyLis
                     clearClienteTable();
                     listarCliente();
                     JOptionPane.showMessageDialog(null, "Usuario:  " + sfc.boxNombreCli.getText() + " reingresar exitosamente!!");
-                   clearBoxCliente();
+                    clearBoxCliente();
                 } else {
                     JOptionPane.showMessageDialog(null, "Error al reingresar el usuario");
                 }
@@ -130,7 +129,7 @@ public class ClientesController implements ActionListener, MouseListener, KeyLis
 
     public void listarCliente() {
         Table inactive = new Table();
-        sfc.tableCliente.setDefaultRenderer(sfc.tableCliente.getColumnClass(1), inactive);
+        sfc.tableCliente.setDefaultRenderer(sfc.tableCliente.getColumnClass(0), inactive);
         List<Clientes> lista = clienteD.ListarClientes(sfc.boxBuscarCli.getText());
         modelCliente = (DefaultTableModel) sfc.tableCliente.getModel();
         Object[] obj = new Object[5];
@@ -170,9 +169,9 @@ public class ClientesController implements ActionListener, MouseListener, KeyLis
         if (e.getSource() == sfc.tableCliente) {
             int row = sfc.tableCliente.rowAtPoint(e.getPoint());
             sfc.boxIdCli.setText(sfc.tableCliente.getValueAt(row, 0).toString());
-            sfc.boxNombreCli.setText(sfc.tableCliente.getValueAt(row, 0).toString());
-            sfc.boxTelefonoCli.setText(sfc.tableCliente.getValueAt(row, 1).toString());
-            sfc.boxDireccionCli.setText(sfc.tableCliente.getValueAt(row, 2).toString());
+            sfc.boxNombreCli.setText(sfc.tableCliente.getValueAt(row, 1).toString());
+            sfc.boxTelefonoCli.setText(sfc.tableCliente.getValueAt(row, 2).toString());
+            sfc.boxDireccionCli.setText(sfc.tableCliente.getValueAt(row, 3).toString());
 
         }
 

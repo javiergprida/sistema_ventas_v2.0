@@ -10,21 +10,22 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 
-public class ClientesDao {
+public class ProveedoresDao {
     
-     connection cn = new connection();
+    connection cn = new connection();
     Connection con;
     PreparedStatement ps;
     ResultSet rs;
     
-     public boolean Registrar(Clientes cliente) {
-        String sql = "insert into clientes(nombre, telefono ,direccion) values (?,?,?)";
+     public boolean Registrar(Proveedores proveedor) {
+        String sql = "insert into proveedores(cuit, nombre ,telefono, direccion) values (?,?,?,?)";
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);
-            ps.setString(1, cliente.getNombre());
-            ps.setString(2, cliente.getTelefono());
-            ps.setString(3, cliente.getDireccion());
+            ps.setString(1, proveedor.getCuit());
+             ps.setString(2, proveedor.getNombre());
+            ps.setString(3, proveedor.getTelefono());
+            ps.setString(4, proveedor.getDireccion());
             
             ps.execute();
             return true;
@@ -36,11 +37,11 @@ public class ClientesDao {
 
     }
      
-       public List ListarClientes(String valor) {
+       public List ListarProveedor(String valor) {
 
-        List<Clientes> listaClientes = new ArrayList();
-        String sql = "select * from clientes order by status asc";
-        String buscar ="select * from clientes where nombre like '%"+valor+"%'  OR  telefono like '%"+valor+"%' ";
+        List<Proveedores> listaProveedor = new ArrayList();
+        String sql = "select * from proveedores order by status asc";
+        String buscar ="select * from proveedores where nombre like '%"+valor+"%'  OR  cuit like '%"+valor+"%' ";
         try {
             con = cn.getConnection();
             if(valor.equalsIgnoreCase(" ")){
@@ -52,31 +53,33 @@ public class ClientesDao {
             
             }
             while (rs.next()) {
-                Clientes cliente = new Clientes();
-                cliente.setId(rs.getInt("id"));
-                cliente.setNombre(rs.getString("nombre"));
-                cliente.setTelefono(rs.getString("telefono"));
-                cliente.setDireccion(rs.getString("direccion"));
-                cliente.setStatus(rs.getString("status"));
-                listaClientes.add(cliente);
+                Proveedores proveedor = new Proveedores();
+                proveedor.setId(rs.getInt("id"));
+                proveedor.setCuit(rs.getString("cuit"));
+                proveedor.setNombre(rs.getString("nombre"));
+                proveedor.setTelefono(rs.getString("telefono"));
+                proveedor.setDireccion(rs.getString("direccion"));
+                proveedor.setStatus(rs.getString("status"));
+                listaProveedor.add(proveedor);
             }
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error: " + e);
 
         }
-        return listaClientes;
+        return listaProveedor;
     }
 
-    public boolean Modificarr(Clientes cliente) {
-        String sql = "update clientes set nombre=?, telefono=?, direccion=? where id=?";
+    public boolean Modificarr(Proveedores proveedor) {
+        String sql = "update proveedores set cuit=?, nombre=?, telefono=?, direccion=? where id=?";
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);
-             ps.setString(1, cliente.getNombre());
-            ps.setString(2, cliente.getTelefono());
-            ps.setString(3, cliente.getDireccion());
-            ps.setInt(4, cliente.getId());
+            ps.setString(1, proveedor.getCuit());
+             ps.setString(2, proveedor.getNombre());
+            ps.setString(3, proveedor.getTelefono());
+            ps.setString(4, proveedor.getDireccion());
+            ps.setInt(5, proveedor.getId());
             ps.execute();
             return true;
 
@@ -89,7 +92,7 @@ public class ClientesDao {
 
     public boolean Accion(String status, int id) {
 
-        String sql = "update clientes set status=? where id=?";
+        String sql = "update proveedores set status=? where id=?";
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);

@@ -32,6 +32,7 @@ public class UsersController implements ActionListener, MouseListener, KeyListen
         this.sfuv.popReingresarUsers.addActionListener(this);
         this.sfuv.boxBuscarUser.addKeyListener(this);
         this.sfuv.tableUsers.addMouseListener(this);
+        clearBoxUsers();
         listarUsers();
     }
 
@@ -68,6 +69,8 @@ public class UsersController implements ActionListener, MouseListener, KeyListen
             }
 
         } else if (e.getSource() == sfuv.btnModificarUsers) {
+            sfuv.btnRegistrarUsers.enableInputMethods(false);
+            JOptionPane.showMessageDialog(null, "No puedes crear el mismo usuario 2 veces");
             if (sfuv.boxUsernameUsers.getText().equals("")
                     || sfuv.boxFullnameUsers.getText().equals("")
                     || sfuv.boxEmailUsers.getText().equals("")) {
