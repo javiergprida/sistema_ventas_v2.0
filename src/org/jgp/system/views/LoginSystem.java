@@ -15,6 +15,8 @@ public class LoginSystem extends javax.swing.JFrame {
         initComponents();
         loginController users = new loginController(us, usDao, this);
          this.unShow.setVisible(false);
+         
+         
     }
 
     /**
@@ -84,6 +86,11 @@ public class LoginSystem extends javax.swing.JFrame {
                 boxUsernameActionPerformed(evt);
             }
         });
+        boxUsername.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                boxUsernameKeyReleased(evt);
+            }
+        });
         panel.add(boxUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, 260, 30));
 
         password.setFont(new java.awt.Font("Roboto Medium", 1, 24)); // NOI18N
@@ -107,6 +114,11 @@ public class LoginSystem extends javax.swing.JFrame {
                 boxPasswordActionPerformed(evt);
             }
         });
+        boxPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                boxPasswordKeyReleased(evt);
+            }
+        });
         panel.add(boxPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 320, 260, 30));
 
         panelExit.setBackground(new java.awt.Color(240, 240, 240));
@@ -118,7 +130,7 @@ public class LoginSystem extends javax.swing.JFrame {
         Exit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Exit.setText("X");
         Exit.setToolTipText("Exit");
-        Exit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Exit.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Exit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ExitMouseClicked(evt);
@@ -143,7 +155,7 @@ public class LoginSystem extends javax.swing.JFrame {
             panelExitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelExitLayout.createSequentialGroup()
                 .addComponent(Exit)
-                .addGap(0, 6, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         panel.add(panelExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 30, 30));
@@ -171,7 +183,7 @@ public class LoginSystem extends javax.swing.JFrame {
         show.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         show.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/jgp/system/img/visible-24.png"))); // NOI18N
         show.setToolTipText("Show!!");
-        show.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        show.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         show.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 showMousePressed(evt);
@@ -184,7 +196,7 @@ public class LoginSystem extends javax.swing.JFrame {
         unShow.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         unShow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/jgp/system/img/ojo-cerrado-24.png"))); // NOI18N
         unShow.setToolTipText("Un Show!!");
-        unShow.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        unShow.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         unShow.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 unShowMousePressed(evt);
@@ -216,7 +228,9 @@ public class LoginSystem extends javax.swing.JFrame {
     }//GEN-LAST:event_boxPasswordActionPerformed
 
     private void boxUsernameMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boxUsernameMousePressed
+        
         if (boxUsername.getText().equals("Ingrese su nombre de ususario")) {
+            boxUsername.setFocusable(true);
             boxUsername.setText("");
             boxUsername.setForeground(Color.BLACK);
         }
@@ -227,7 +241,9 @@ public class LoginSystem extends javax.swing.JFrame {
     }//GEN-LAST:event_boxUsernameMousePressed
 
     private void boxPasswordMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boxPasswordMousePressed
+      
         if (String.valueOf(boxPassword.getPassword()).equals("************")) {
+            
             boxPassword.setText("");
             boxPassword.setForeground(Color.BLACK);
         }
@@ -274,6 +290,24 @@ public class LoginSystem extends javax.swing.JFrame {
         unShow.setVisible(false);
         boxPassword.setEchoChar('*');
     }//GEN-LAST:event_unShowMousePressed
+
+    private void boxUsernameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_boxUsernameKeyReleased
+      
+    }//GEN-LAST:event_boxUsernameKeyReleased
+
+    private void boxPasswordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_boxPasswordKeyReleased
+       if(evt.getKeyCode() ==  evt.VK_TAB){
+        if (String.valueOf(boxPassword.getPassword()).equals("************")) {
+             
+            boxPassword.setText("");
+            boxPassword.setForeground(Color.BLACK);
+        }
+        if (boxUsername.getText().isEmpty()) {
+            boxUsername.setText("Ingrese su nombre de ususario");
+            boxUsername.setForeground(Color.lightGray);
+        }
+       }
+    }//GEN-LAST:event_boxPasswordKeyReleased
 
     /**
      * @param args the command line arguments

@@ -1,6 +1,6 @@
 package org.jgp.system.views.component;
 
-import java.awt.Color;
+
 import org.jgp.system.controller.UsersController;
 import org.jgp.system.models.Users;
 import org.jgp.system.models.UsersDao;
@@ -15,6 +15,7 @@ public class SubFormUsuarios extends javax.swing.JPanel {
         initComponents();
         setOpaque(false);
         labelForm.setText(name);
+        boxIdUsers.setVisible(true);
         UsersController users = new UsersController(us, usDao,this);
     }
 
@@ -26,7 +27,6 @@ public class SubFormUsuarios extends javax.swing.JPanel {
         popEliminarUsers = new javax.swing.JMenuItem();
         popReingresarUsers = new javax.swing.JMenuItem();
         labelForm = new javax.swing.JLabel();
-        btnBack = new org.jgp.system.views.swing.Button();
         panelUsers = new javax.swing.JPanel();
         usuario = new javax.swing.JLabel();
         boxUsernameUsers = new javax.swing.JTextField();
@@ -42,9 +42,6 @@ public class SubFormUsuarios extends javax.swing.JPanel {
         comboCashUsers = new javax.swing.JComboBox<>();
         Rol = new javax.swing.JLabel();
         comboRolUsers = new javax.swing.JComboBox<>();
-        btnNuevoUsers = new org.jgp.system.views.swing.Button();
-        btnRegistrarUsers = new org.jgp.system.views.swing.Button();
-        btnModificarUsers = new org.jgp.system.views.swing.Button();
         checkBoxShow = new javax.swing.JCheckBox();
         iconsuser = new javax.swing.JLabel();
         boxIdUsers = new javax.swing.JTextField();
@@ -52,9 +49,11 @@ public class SubFormUsuarios extends javax.swing.JPanel {
         panelBuscar = new javax.swing.JPanel();
         btnBuscar = new javax.swing.JLabel();
         panelPagination = new javax.swing.JPanel();
-        pagination = new org.jgp.system.views.swing.slideshow.Pagination();
         scrollPaneUsers = new javax.swing.JScrollPane();
         tableUsers = new rojerusan.RSTableMetro();
+        btnRegistrarUsers = new org.jgp.system.views.swing.Button();
+        btnModificarUsers = new org.jgp.system.views.swing.Button();
+        btnBack = new org.jgp.system.views.swing.Button();
 
         popEliminarUsers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/jgp/system/img/eliminar.png"))); // NOI18N
         popEliminarUsers.setText("Eliminar Usuario");
@@ -70,13 +69,6 @@ public class SubFormUsuarios extends javax.swing.JPanel {
         labelForm.setFont(new java.awt.Font("sansserif", 1, 48)); // NOI18N
         labelForm.setForeground(new java.awt.Color(212, 212, 212));
         labelForm.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-
-        btnBack.setText("Back");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
 
         panelUsers.setBackground(new java.awt.Color(102, 115, 255));
         panelUsers.setForeground(new java.awt.Color(212, 212, 212));
@@ -158,15 +150,6 @@ public class SubFormUsuarios extends javax.swing.JPanel {
         comboRolUsers.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "----Seleccionar----", "Administrador", "Operario" }));
         panelUsers.add(comboRolUsers, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 451, 260, -1));
 
-        btnNuevoUsers.setText("Nuevo");
-        panelUsers.add(btnNuevoUsers, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 571, 120, 54));
-
-        btnRegistrarUsers.setText("Registrar");
-        panelUsers.add(btnRegistrarUsers, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 571, 120, 54));
-
-        btnModificarUsers.setText("Modificar");
-        panelUsers.add(btnModificarUsers, new org.netbeans.lib.awtextra.AbsoluteConstraints(299, 571, 120, 54));
-
         checkBoxShow.setBackground(new java.awt.Color(102, 115, 255));
         checkBoxShow.setFont(new java.awt.Font("Roboto Black", 0, 19)); // NOI18N
         checkBoxShow.setForeground(new java.awt.Color(255, 255, 255));
@@ -225,11 +208,11 @@ public class SubFormUsuarios extends javax.swing.JPanel {
         panelPagination.setLayout(panelPaginationLayout);
         panelPaginationLayout.setHorizontalGroup(
             panelPaginationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pagination, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE)
+            .addGap(0, 634, Short.MAX_VALUE)
         );
         panelPaginationLayout.setVerticalGroup(
             panelPaginationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pagination, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
+            .addGap(0, 55, Short.MAX_VALUE)
         );
 
         panelUsers.add(panelPagination, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 560, 640, -1));
@@ -253,6 +236,7 @@ public class SubFormUsuarios extends javax.swing.JPanel {
         tableUsers.setColorForegroundHead(new java.awt.Color(212, 212, 212));
         tableUsers.setColorSelBackgound(new java.awt.Color(102, 51, 255));
         tableUsers.setColorSelForeground(new java.awt.Color(212, 212, 212));
+        tableUsers.setComponentPopupMenu(menuPopUsers);
         scrollPaneUsers.setViewportView(tableUsers);
         if (tableUsers.getColumnModel().getColumnCount() > 0) {
             tableUsers.getColumnModel().getColumn(0).setPreferredWidth(3);
@@ -266,32 +250,38 @@ public class SubFormUsuarios extends javax.swing.JPanel {
 
         panelUsers.add(scrollPaneUsers, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 120, 710, 420));
 
+        btnRegistrarUsers.setText("Agregar");
+        panelUsers.add(btnRegistrarUsers, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 570, 120, 60));
+
+        btnModificarUsers.setText("Modificar");
+        panelUsers.add(btnModificarUsers, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 570, 120, 60));
+
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(panelUsers, javax.swing.GroupLayout.DEFAULT_SIZE, 1162, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(labelForm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelForm, javax.swing.GroupLayout.DEFAULT_SIZE, 1071, Short.MAX_VALUE)
                 .addContainerGap())
+            .addComponent(panelUsers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(labelForm, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(labelForm, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
+                    .addComponent(btnBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelUsers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(panelUsers, javax.swing.GroupLayout.DEFAULT_SIZE, 698, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -337,10 +327,9 @@ public class SubFormUsuarios extends javax.swing.JPanel {
     public javax.swing.JPasswordField boxPasswordUsers;
     public javax.swing.JPasswordField boxRePasswordUsers;
     public javax.swing.JTextField boxUsernameUsers;
-    private org.jgp.system.views.swing.Button btnBack;
+    public org.jgp.system.views.swing.Button btnBack;
     private javax.swing.JLabel btnBuscar;
     public org.jgp.system.views.swing.Button btnModificarUsers;
-    public org.jgp.system.views.swing.Button btnNuevoUsers;
     public org.jgp.system.views.swing.Button btnRegistrarUsers;
     private javax.swing.JCheckBox checkBoxShow;
     public javax.swing.JComboBox<String> comboCashUsers;
@@ -348,7 +337,6 @@ public class SubFormUsuarios extends javax.swing.JPanel {
     private javax.swing.JLabel iconsuser;
     private javax.swing.JLabel labelForm;
     public javax.swing.JPopupMenu menuPopUsers;
-    private org.jgp.system.views.swing.slideshow.Pagination pagination;
     private javax.swing.JPanel panelBuscar;
     private javax.swing.JPanel panelPagination;
     private javax.swing.JPanel panelUsers;

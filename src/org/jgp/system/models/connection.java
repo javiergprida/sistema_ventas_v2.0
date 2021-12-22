@@ -20,7 +20,7 @@ public class connection {
     public Connection getConnection(){
         try{
         
-                String db = "jdbc:mysql://localhost:3306/posventamvc";
+                String db = "jdbc:mysql://localhost:3306/venta_pro_mvc";
                 conn = DriverManager.getConnection(db, "root", "");
                 return conn;
         
