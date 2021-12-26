@@ -139,5 +139,61 @@ public class ProductosDao {
         }
         return producto;
     }
+    
+    public Productos BuscarCodigo(String codigo) {
+        String sql = "select * from productos where codigo=?";
+        Productos producto = new Productos();
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, codigo);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                producto.setId(rs.getInt("id"));
+                producto.setNombre(rs.getString("nombre"));
+                producto.setPrecioCompra(rs.getDouble("precio_compra"));
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e);
+        }
+        return producto;
+    }
+    
+    public boolean registrarCompra(int idProveedor, String total){
+        String sql = "insert into compras(id_proveedor, total) values (?,?)";
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, idProveedor);
+            ps.setString(2, total);
+            ps.execute();
+            return true;
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e);
+            return false;
+        }
+    
+    }
+    
+     public boolean registrarCompraDetalle(int idCompra, double precio, int cantidad, double subTotal){
+        String sql = "insert into detalle_compra(id_compra, precio, cantidad, subtotal) values (?,?,?,?)";
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, idCompra);
+            ps.setDouble(2, precio);
+            ps.setInt(3, cantidad);
+            ps.setDouble(4, subTotal);
+            ps.execute();
+            return true;
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e);
+            return false;
+        }
+    
+    }
 
 }

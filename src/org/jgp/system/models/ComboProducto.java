@@ -6,6 +6,9 @@ public class ComboProducto {
     private int id;
     private String nombre;
 
+    public ComboProducto() {
+    }
+
         
     public ComboProducto(int id, String nombre) {
         this.id = id;
