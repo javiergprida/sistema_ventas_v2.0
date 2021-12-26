@@ -19,7 +19,7 @@ public class MedidasDao {
     
     
     public boolean Registrar(Medidas medida) {
-        String sql = "insert into medidas(nombre, abreviatura) values (?,?)";
+        String sql = "insert into medidas(medida, abreviatura) values (?,?)";
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);
@@ -41,7 +41,7 @@ public class MedidasDao {
 
         List<Medidas> listaMedidas = new ArrayList();
         String sql = "select * from medidas order by status asc";
-        String buscar ="select * from medidas where nombre like '%"+valor+"%' ";
+        String buscar ="select * from medidas where medida like '%"+valor+"%' ";
         try {
             con = cn.getConnection();
             if(valor.equalsIgnoreCase(" ")){
@@ -55,7 +55,7 @@ public class MedidasDao {
             while (rs.next()) {
                 Medidas medida = new Medidas();
                 medida.setId(rs.getInt("id"));
-                medida.setNombre(rs.getString("nombre"));
+                medida.setNombre(rs.getString("medida"));
                 medida.setAbreviatura(rs.getString("abreviatura"));
                 medida.setStatus(rs.getString("status"));
                 listaMedidas.add(medida);
@@ -69,7 +69,7 @@ public class MedidasDao {
     }
 
     public boolean Modificarr(Medidas medida) {
-        String sql = "update medidas set nombre=?, abreviatura=? where id=?";
+        String sql = "update medidas set medida=?, abreviatura=? where id=?";
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);

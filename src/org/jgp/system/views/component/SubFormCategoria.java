@@ -8,6 +8,7 @@ import org.jgp.system.views.IndexProgram;
 public class SubFormCategoria extends javax.swing.JPanel {
     Categoria categoria = new Categoria();
     CategoriaDao categoriaD = new CategoriaDao();
+    
 
     public SubFormCategoria(String name) {
         initComponents();

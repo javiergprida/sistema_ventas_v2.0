@@ -64,8 +64,6 @@ public class ClientesController implements ActionListener, MouseListener, KeyLis
             }
 
         } else if (e.getSource() == sfc.btnModificarCli) {
-            sfc.btnRegistrarCli.enableInputMethods(false);
-            JOptionPane.showMessageDialog(null, "No puedes crear el mismo cliente 2 veces");
             if (sfc.boxNombreCli.getText().equals("")
                     || sfc.boxTelefonoCli.getText().equals("")
                     || sfc.boxDireccionCli.getText().equals("")) {
@@ -75,6 +73,7 @@ public class ClientesController implements ActionListener, MouseListener, KeyLis
                 cliente.setNombre(sfc.boxNombreCli.getText());
                 cliente.setTelefono(sfc.boxTelefonoCli.getText());
                 cliente.setDireccion(sfc.boxDireccionCli.getText());
+                cliente.setId(Integer.parseInt(sfc.boxIdCli.getText()));
 
                 if (clienteD.Modificarr(cliente)) {
                     clearClienteTable();
@@ -128,8 +127,8 @@ public class ClientesController implements ActionListener, MouseListener, KeyLis
     }
 
     public void listarCliente() {
-        Table inactive = new Table();
-        sfc.tableCliente.setDefaultRenderer(sfc.tableCliente.getColumnClass(0), inactive);
+        Table color = new Table();
+        sfc.tableCliente.setDefaultRenderer(sfc.tableCliente.getColumnClass(0), color);
         List<Clientes> lista = clienteD.ListarClientes(sfc.boxBuscarCli.getText());
         modelCliente = (DefaultTableModel) sfc.tableCliente.getModel();
         Object[] obj = new Object[5];
@@ -172,6 +171,7 @@ public class ClientesController implements ActionListener, MouseListener, KeyLis
             sfc.boxNombreCli.setText(sfc.tableCliente.getValueAt(row, 1).toString());
             sfc.boxTelefonoCli.setText(sfc.tableCliente.getValueAt(row, 2).toString());
             sfc.boxDireccionCli.setText(sfc.tableCliente.getValueAt(row, 3).toString());
+             sfc.btnRegistrarCli.setEnabled(false);
 
         }
 

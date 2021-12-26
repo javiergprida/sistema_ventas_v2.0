@@ -1,4 +1,3 @@
-
 package org.jgp.system.controller;
 
 import java.awt.event.ActionEvent;
@@ -14,33 +13,32 @@ import org.jgp.system.models.Medidas;
 import org.jgp.system.models.MedidasDao;
 import org.jgp.system.models.Table;
 import org.jgp.system.views.component.SubFormMedidas;
-
+import org.jgp.system.views.component.SubFormProductos;
 
 public class MedidasController implements ActionListener, MouseListener, KeyListener {
-    
+
     private Medidas medida;
     private MedidasDao medidaD;
     private SubFormMedidas sfm;
-     DefaultTableModel modelMedidas = new DefaultTableModel();
-     
-     
-     public MedidasController(Medidas medida,MedidasDao medidaD,SubFormMedidas sfm  ){
-         this.medida = medida;
-         this.medidaD = medidaD;
-         this.sfm = sfm;
-         this.sfm.tableMedida.addMouseListener(this);
-         this.sfm.btnRegistrarMedida.addActionListener(this);
-         this.sfm.btnModificarMedida.addActionListener(this);
-         this.sfm.popEliminarMedida.addActionListener(this);
-         this.sfm.popReingresarMedida.addActionListener(this);
-         this.sfm.boxBuscarMedida.addKeyListener(this);
-          clearBoxMedida();
-         listarMedida();
-         
-     
-     
-     }
-    
+    private SubFormProductos sfpro;
+
+    DefaultTableModel modelMedidas = new DefaultTableModel();
+
+    public MedidasController(Medidas medida, MedidasDao medidaD, SubFormMedidas sfm) {
+        this.medida = medida;
+        this.medidaD = medidaD;
+        this.sfm = sfm;
+        this.sfm.tableMedida.addMouseListener(this);
+        this.sfm.btnRegistrarMedida.addActionListener(this);
+        this.sfm.btnModificarMedida.addActionListener(this);
+        this.sfm.popEliminarMedida.addActionListener(this);
+        this.sfm.popReingresarMedida.addActionListener(this);
+        this.sfm.boxBuscarMedida.addKeyListener(this);
+        //llenarMedida();
+        clearBoxMedida();
+        listarMedida();
+
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -52,7 +50,6 @@ public class MedidasController implements ActionListener, MouseListener, KeyList
             } else {
                 medida.setNombre(sfm.boxNombreMedida.getText());
                 medida.setAbreviatura(sfm.boxAbrevMedida.getText());
-                
 
                 if (medidaD.Registrar(medida)) {
                     clearMedidaTable();
@@ -69,8 +66,6 @@ public class MedidasController implements ActionListener, MouseListener, KeyList
             }
 
         } else if (e.getSource() == sfm.btnModificarMedida) {
-            sfm.btnRegistrarMedida.enableInputMethods(false);
-            JOptionPane.showMessageDialog(null, "No puedes crear la misma medida 2 veces");
             if (sfm.boxNombreMedida.getText().equals("")
                     || sfm.boxAbrevMedida.getText().equals("")) {
 
@@ -78,7 +73,7 @@ public class MedidasController implements ActionListener, MouseListener, KeyList
             } else {
                 medida.setNombre(sfm.boxNombreMedida.getText());
                 medida.setAbreviatura(sfm.boxAbrevMedida.getText());
-                
+                medida.setId(Integer.parseInt(sfm.boxIdMedida.getText()));
 
                 if (medidaD.Modificarr(medida)) {
                     clearMedidaTable();
@@ -120,20 +115,20 @@ public class MedidasController implements ActionListener, MouseListener, KeyList
                 if (medidaD.Accion("active", id)) {
                     clearMedidaTable();
                     listarMedida();
-                    JOptionPane.showMessageDialog(null, "Medida:  " +sfm.boxNombreMedida.getText() + " reingresar exitosamente!!");
-                     clearBoxMedida();
+                    JOptionPane.showMessageDialog(null, "Medida:  " + sfm.boxNombreMedida.getText() + " reingresar exitosamente!!");
+                    clearBoxMedida();
                 } else {
                     JOptionPane.showMessageDialog(null, "Error al reingresar la Medida");
                 }
 
             }
         }
-       
+
     }
-    
+
     public void listarMedida() {
-        Table inactive = new Table();
-        sfm.tableMedida.setDefaultRenderer(sfm.tableMedida.getColumnClass(0), inactive);
+        Table color = new Table();
+        sfm.tableMedida.setDefaultRenderer(sfm.tableMedida.getColumnClass(0), color);
         List<Medidas> lista = medidaD.ListarMedidas(sfm.boxBuscarMedida.getText());
         modelMedidas = (DefaultTableModel) sfm.tableMedida.getModel();
         Object[] obj = new Object[4];
@@ -174,50 +169,52 @@ public class MedidasController implements ActionListener, MouseListener, KeyList
             sfm.boxIdMedida.setText(sfm.tableMedida.getValueAt(row, 0).toString());
             sfm.boxNombreMedida.setText(sfm.tableMedida.getValueAt(row, 1).toString());
             sfm.boxAbrevMedida.setText(sfm.tableMedida.getValueAt(row, 2).toString());
-            
+            sfm.btnRegistrarMedida.setEnabled(false);
 
         }
-        
+
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-        
+
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        
+
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        
+
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        
+
     }
 
     @Override
     public void keyTyped(KeyEvent e) {
-        
+
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
-        
+
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
         if (e.getSource() == sfm.boxBuscarMedida) {
             clearMedidaTable();
-           listarMedida();
+            listarMedida();
 
         }
-        
+
     }
+
     
+
 }

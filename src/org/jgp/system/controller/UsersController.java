@@ -69,8 +69,6 @@ public class UsersController implements ActionListener, MouseListener, KeyListen
             }
 
         } else if (e.getSource() == sfuv.btnModificarUsers) {
-            sfuv.btnRegistrarUsers.enableInputMethods(false);
-            JOptionPane.showMessageDialog(null, "No puedes crear el mismo usuario 2 veces");
             if (sfuv.boxUsernameUsers.getText().equals("")
                     || sfuv.boxFullnameUsers.getText().equals("")
                     || sfuv.boxEmailUsers.getText().equals("")) {
@@ -135,8 +133,8 @@ public class UsersController implements ActionListener, MouseListener, KeyListen
     }
 
     public void listarUsers() {
-        Table inactive = new Table();
-        sfuv.tableUsers.setDefaultRenderer(sfuv.tableUsers.getColumnClass(0), inactive);
+        Table color = new Table();
+        sfuv.tableUsers.setDefaultRenderer(sfuv.tableUsers.getColumnClass(0), color);
         List<Users> lista = usDao.ListarUsers(sfuv.boxBuscarUser.getText());
         model = (DefaultTableModel) sfuv.tableUsers.getModel();
         Object[] obj = new Object[7];

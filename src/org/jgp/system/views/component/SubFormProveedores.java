@@ -9,6 +9,8 @@ public class SubFormProveedores extends javax.swing.JPanel {
     
     Proveedores proveedor = new Proveedores();
     ProveedoresDao proveedorD = new ProveedoresDao();
+    
+    
 
     public SubFormProveedores(String name) {
         initComponents();

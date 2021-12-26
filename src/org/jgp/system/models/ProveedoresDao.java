@@ -18,7 +18,7 @@ public class ProveedoresDao {
     ResultSet rs;
     
      public boolean Registrar(Proveedores proveedor) {
-        String sql = "insert into proveedores(cuit, nombre ,telefono, direccion) values (?,?,?,?)";
+        String sql = "insert into proveedores(cuit, proveedor ,telefono, direccion) values (?,?,?,?)";
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);
@@ -41,7 +41,7 @@ public class ProveedoresDao {
 
         List<Proveedores> listaProveedor = new ArrayList();
         String sql = "select * from proveedores order by status asc";
-        String buscar ="select * from proveedores where nombre like '%"+valor+"%'  OR  cuit like '%"+valor+"%' ";
+        String buscar ="select * from proveedores where proveedor like '%"+valor+"%'  OR  cuit like '%"+valor+"%' ";
         try {
             con = cn.getConnection();
             if(valor.equalsIgnoreCase(" ")){
@@ -56,7 +56,7 @@ public class ProveedoresDao {
                 Proveedores proveedor = new Proveedores();
                 proveedor.setId(rs.getInt("id"));
                 proveedor.setCuit(rs.getString("cuit"));
-                proveedor.setNombre(rs.getString("nombre"));
+                proveedor.setNombre(rs.getString("proveedor"));
                 proveedor.setTelefono(rs.getString("telefono"));
                 proveedor.setDireccion(rs.getString("direccion"));
                 proveedor.setStatus(rs.getString("status"));
@@ -71,7 +71,7 @@ public class ProveedoresDao {
     }
 
     public boolean Modificarr(Proveedores proveedor) {
-        String sql = "update proveedores set cuit=?, nombre=?, telefono=?, direccion=? where id=?";
+        String sql = "update proveedores set cuit=?, proveedor=?, telefono=?, direccion=? where id=?";
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);

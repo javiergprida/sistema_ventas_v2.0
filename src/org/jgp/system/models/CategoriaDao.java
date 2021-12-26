@@ -18,7 +18,7 @@ public class CategoriaDao {
     ResultSet rs;
     
      public boolean Registrar(Categoria categoria) {
-        String sql = "insert into categorias(nombre) values (?)";
+        String sql = "insert into categorias(categoria) values (?)";
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);
@@ -39,7 +39,7 @@ public class CategoriaDao {
 
         List<Categoria> listaCategorias = new ArrayList();
         String sql = "select * from categorias order by status asc";
-        String buscar ="select * from categorias where nombre like '%"+valor+"%'";
+        String buscar ="select * from categorias where categoria like '%"+valor+"%'";
         try {
             con = cn.getConnection();
             if(valor.equalsIgnoreCase(" ")){
@@ -53,7 +53,7 @@ public class CategoriaDao {
             while (rs.next()) {
                 Categoria categoria = new Categoria();
                 categoria.setId(rs.getInt("id"));
-                categoria.setNombre(rs.getString("nombre"));
+                categoria.setNombre(rs.getString("categoria"));
                 categoria.setStatus(rs.getString("status"));
                 listaCategorias.add(categoria);
             }
@@ -65,8 +65,8 @@ public class CategoriaDao {
         return listaCategorias;
     }
 
-    public boolean Modificarr(Categoria categoria) {
-        String sql = "update categorias set nombre=? where id=?";
+    public boolean Modificar(Categoria categoria) {
+        String sql = "update categorias set categoria=? where id=?";
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);

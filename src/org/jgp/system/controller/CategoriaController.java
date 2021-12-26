@@ -11,27 +11,30 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.jgp.system.models.Categoria;
 import org.jgp.system.models.CategoriaDao;
-import org.jgp.system.models.Medidas;
+import org.jgp.system.models.ComboProducto;
 import org.jgp.system.models.Table;
 import org.jgp.system.views.component.SubFormCategoria;
+import org.jgp.system.views.component.SubFormProductos;
 
 public class CategoriaController implements ActionListener, MouseListener, KeyListener {
 
     private Categoria categoria;
     private CategoriaDao categoriaD;
-    private SubFormCategoria sfc;
+    private SubFormCategoria sfca;
+    private SubFormProductos sfpro;
     DefaultTableModel modelCategoria = new DefaultTableModel();
 
-    public CategoriaController(Categoria categoria, CategoriaDao categoriaD, SubFormCategoria sfc) {
+    public CategoriaController(Categoria categoria, CategoriaDao categoriaD, SubFormCategoria sfca) {
         this.categoria = categoria;
         this.categoriaD = categoriaD;
-        this.sfc = sfc;
-        this.sfc.tableCategoria.addMouseListener(this);
-        this.sfc.popEliminarCategoria.addActionListener(this);
-        this.sfc.popReingresarcategoria.addActionListener(this);
-        this.sfc.boxBuscarCategoria.addKeyListener(this);
-        this.sfc.btnRegistrarCategoria.addActionListener(this);
-        this.sfc.btnModificarCategoria.addActionListener(this);
+        this.sfca = sfca;    
+        this.sfca.tableCategoria.addMouseListener(this);
+        this.sfca.popEliminarCategoria.addActionListener(this);
+        this.sfca.popReingresarcategoria.addActionListener(this);
+        this.sfca.boxBuscarCategoria.addKeyListener(this);
+        this.sfca.btnRegistrarCategoria.addActionListener(this);
+        this.sfca.btnModificarCategoria.addActionListener(this);
+        //llenarCategoria();
         clearBoxCategoria();
         listarCategoria();
 
@@ -39,18 +42,18 @@ public class CategoriaController implements ActionListener, MouseListener, KeyLi
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == sfc.btnRegistrarCategoria) {
-            if (sfc.boxNombreCategoria.getText().equals("")) {
+        if (e.getSource() == sfca.btnRegistrarCategoria) {
+            if (sfca.boxNombreCategoria.getText().equals("")) {
 
                 JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios");
             } else {
-                categoria.setNombre(sfc.boxNombreCategoria.getText());
+                categoria.setNombre(sfca.boxNombreCategoria.getText());
 
                 if (categoriaD.Registrar(categoria)) {
                     clearCategoriaTable();
                     listarCategoria();
 
-                    JOptionPane.showMessageDialog(null, "Categoria: " + sfc.boxNombreCategoria.getText() + " creado exitosamente!!");
+                    JOptionPane.showMessageDialog(null, "Categoria: " + sfca.boxNombreCategoria.getText() + " creado exitosamente!!");
                     clearBoxCategoria();
                 } else {
 
@@ -60,19 +63,20 @@ public class CategoriaController implements ActionListener, MouseListener, KeyLi
 
             }
 
-        } else if (e.getSource() == sfc.btnModificarCategoria) {
+        } else if (e.getSource() == sfca.btnModificarCategoria) {
             
-             if (sfc.boxNombreCategoria.getText().equals("")) {
+             if (sfca.boxNombreCategoria.getText().equals("")) {
 
                 JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios");
             } else {
-                categoria.setNombre(sfc.boxNombreCategoria.getText());
+                categoria.setNombre(sfca.boxNombreCategoria.getText());
+                categoria.setId(Integer.parseInt(sfca.boxIdCategoria.getText()));
 
-                if (categoriaD.Modificarr(categoria)) {
+                if (categoriaD.Modificar(categoria)) {
                     clearCategoriaTable();
                     listarCategoria();
 
-                    JOptionPane.showMessageDialog(null, "Categoria: " + sfc.boxNombreCategoria.getText() + " creado exitosamente!!");
+                    JOptionPane.showMessageDialog(null, "Categoria: " + sfca.boxNombreCategoria.getText() + " modificado exitosamente!!");
                     clearBoxCategoria();
                 } else {
 
@@ -82,33 +86,33 @@ public class CategoriaController implements ActionListener, MouseListener, KeyLi
 
             }
 
-        } else if (e.getSource() == sfc.popEliminarCategoria) {
-            if (sfc.boxIdCategoria.getText().equals("")) {
+        } else if (e.getSource() == sfca.popEliminarCategoria) {
+            if (sfca.boxIdCategoria.getText().equals("")) {
                 JOptionPane.showMessageDialog(null, "Seleccione una fila para eliminar");
 
             } else {
-                int id = Integer.parseInt(sfc.boxIdCategoria.getText());
+                int id = Integer.parseInt(sfca.boxIdCategoria.getText());
                 if (categoriaD.Accion("inactive", id)) {
                     clearCategoriaTable();
                     listarCategoria();
 
-                    JOptionPane.showMessageDialog(null, "Categoria:  " + sfc.boxNombreCategoria.getText() + " eliminado exitosamente!!");
+                    JOptionPane.showMessageDialog(null, "Categoria:  " + sfca.boxNombreCategoria.getText() + " eliminado exitosamente!!");
                     clearBoxCategoria();
                 } else {
                     JOptionPane.showMessageDialog(null, "Error al eliminar la Categoria");
                 }
 
             }
-        } else if (e.getSource() == sfc.popReingresarcategoria) {
-            if (sfc.boxIdCategoria.getText().equals("")) {
+        } else if (e.getSource() == sfca.popReingresarcategoria) {
+            if (sfca.boxIdCategoria.getText().equals("")) {
                 JOptionPane.showMessageDialog(null, "Seleccione una fila para reingresar");
 
             } else {
-                int id = Integer.parseInt(sfc.boxIdCategoria.getText());
+                int id = Integer.parseInt(sfca.boxIdCategoria.getText());
                 if (categoriaD.Accion("active", id)) {
                     clearCategoriaTable();
                     listarCategoria();
-                    JOptionPane.showMessageDialog(null, "Categoria:  " + sfc.boxNombreCategoria.getText() + " reingresar exitosamente!!");
+                    JOptionPane.showMessageDialog(null, "Categoria:  " + sfca.boxNombreCategoria.getText() + " reingresar exitosamente!!");
                     clearBoxCategoria();
                 } else {
                     JOptionPane.showMessageDialog(null, "Error al reingresar la Categoria");
@@ -121,10 +125,10 @@ public class CategoriaController implements ActionListener, MouseListener, KeyLi
     
 
     public void listarCategoria() {
-        Table inactive = new Table();
-        sfc.tableCategoria.setDefaultRenderer(sfc.tableCategoria.getColumnClass(0), inactive);
-        List<Categoria> lista = categoriaD.ListarCategorias(sfc.boxBuscarCategoria.getText());
-        modelCategoria = (DefaultTableModel) sfc.tableCategoria.getModel();
+        Table color = new Table();
+        sfca.tableCategoria.setDefaultRenderer(sfca.tableCategoria.getColumnClass(0), color);
+        List<Categoria> lista = categoriaD.ListarCategorias(sfca.boxBuscarCategoria.getText());
+        modelCategoria = (DefaultTableModel) sfca.tableCategoria.getModel();
         Object[] obj = new Object[3];
         for (int i = 0; i < lista.size(); i++) {
             obj[0] = lista.get(i).getId();
@@ -134,7 +138,7 @@ public class CategoriaController implements ActionListener, MouseListener, KeyLi
 
         }
 
-        sfc.tableCategoria.setModel(modelCategoria);
+        sfca.tableCategoria.setModel(modelCategoria);
 
     }
 
@@ -148,18 +152,19 @@ public class CategoriaController implements ActionListener, MouseListener, KeyLi
     }
 
     public void clearBoxCategoria() {
-        sfc.boxIdCategoria.setText("");
-        sfc.boxBuscarCategoria.setText("");
-        sfc.boxNombreCategoria.setText("");
+        sfca.boxIdCategoria.setText("");
+        sfca.boxBuscarCategoria.setText("");
+        sfca.boxNombreCategoria.setText("");
 
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        if (e.getSource() == sfc.tableCategoria) {
-            int row = sfc.tableCategoria.rowAtPoint(e.getPoint());
-            sfc.boxIdCategoria.setText(sfc.tableCategoria.getValueAt(row, 0).toString());
-            sfc.boxNombreCategoria.setText(sfc.tableCategoria.getValueAt(row, 1).toString());
+        if (e.getSource() == sfca.tableCategoria) {
+            int row = sfca.tableCategoria.rowAtPoint(e.getPoint());
+            sfca.boxIdCategoria.setText(sfca.tableCategoria.getValueAt(row, 0).toString());
+            sfca.boxNombreCategoria.setText(sfca.tableCategoria.getValueAt(row, 1).toString());
+            sfca.btnRegistrarCategoria.setEnabled(false);
 
         }
     }
@@ -196,11 +201,12 @@ public class CategoriaController implements ActionListener, MouseListener, KeyLi
 
     @Override
     public void keyReleased(KeyEvent e) {
-        if (e.getSource() == sfc.boxBuscarCategoria) {
+        if (e.getSource() == sfca.boxBuscarCategoria) {
             clearCategoriaTable();
             listarCategoria();
 
         }
     }
-
+    
+    
 }
