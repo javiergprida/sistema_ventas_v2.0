@@ -131,4 +131,28 @@ public class UsersDao {
             return(false);
         }
     }
+    
+    public Configuracion getConfig(){
+           String sql = "select * from configuracion";
+        Configuracion cf = new Configuracion();
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                cf.setId(rs.getInt("id"));
+                cf.setCuit(rs.getString("cuit"));
+                cf.setNombre(rs.getString("nombre"));
+                cf.setTelefono(rs.getString("telefono"));
+                cf.setDireccion(rs.getString("direccion"));
+                cf.setMensaje(rs.getString("mensaje"));
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e);
+        }
+        return cf;
+    
+    
+    }
 }

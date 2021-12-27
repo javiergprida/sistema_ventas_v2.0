@@ -177,15 +177,16 @@ public class ProductosDao {
     
     }
     
-     public boolean registrarCompraDetalle(int idCompra, double precio, int cantidad, double subTotal){
-        String sql = "insert into detalle_compra(id_compra, precio, cantidad, subtotal) values (?,?,?,?)";
+     public boolean registrarCompraDetalle(int idCompra, int id, double precio, int cantidad, double subTotal){
+        String sql = "insert into detalle_compra(id_compra, id_producto ,precio, cantidad, subtotal) values (?,?,?,?,?)";
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);
             ps.setInt(1, idCompra);
-            ps.setDouble(2, precio);
-            ps.setInt(3, cantidad);
-            ps.setDouble(4, subTotal);
+             ps.setInt(2, id);
+            ps.setDouble(3, precio);
+            ps.setInt(4, cantidad);
+            ps.setDouble(5, subTotal);
             ps.execute();
             return true;
 
@@ -195,5 +196,88 @@ public class ProductosDao {
         }
     
     }
+    
+     public Productos BuscarId(int id) {
+        String sql = "select * from productos where id=?";
+        Productos producto = new Productos();
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                producto.setCantidad(rs.getInt("cantidad"));
+               
+            }
 
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e);
+        }
+        return producto;
+    }
+     
+     public boolean ActualizarStock(int cantidad, int id) {
+        String sql = "update productos set cantidad=? where id=?";
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+             ps.setInt(1, cantidad);
+            ps.setInt(2, id);
+            ps.execute();
+            return true;
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e);
+            return false;
+        }
+
+    }
+     
+     public int id_compra(){
+         int id = 0;
+         String sql ="select max(id) as id from compras";
+         try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                id = rs.getInt("id");
+            }
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e);
+            
+        }
+     return id;
+     
+     }
+
+     public List ListaDetalle(int id_compra) {
+
+        List<Productos> listaDetalles = new ArrayList();
+        String sql = "SELECT c.*, dc.*, p.id, p.nombre FROM compras c INNER JOIN detalle_compra dc on dc.id_compra = c.id INNER JOIN productos p ON p.id = dc.id_producto WHERE c.id = ?";
+        
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, id_compra);
+            rs = ps.executeQuery();
+            
+            
+            while (rs.next()) {
+                Productos producto = new Productos();
+                producto.setCantidad(rs.getInt("cantidad"));
+                producto.setNombre(rs.getString("nombre"));
+                producto.setPrecioCompra(rs.getDouble("precio"));
+                producto.setPrecioVenta(rs.getDouble("subtotal"));
+                listaDetalles.add(producto);
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e);
+
+        }
+        return listaDetalles;
+    }
+     
 }

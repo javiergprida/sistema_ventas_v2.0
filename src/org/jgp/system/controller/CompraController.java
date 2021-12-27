@@ -17,6 +17,7 @@ import org.jgp.system.models.Productos;
 import org.jgp.system.models.ProductosDao;
 import org.jgp.system.models.Proveedores;
 import org.jgp.system.models.ProveedoresDao;
+import org.jgp.system.views.PrintDetalle;
 import org.jgp.system.views.component.SubFormCompra;
 import org.jgp.system.views.component.SubFormProveedores;
 
@@ -119,7 +120,7 @@ public class CompraController implements ActionListener, MouseListener, KeyListe
                 int id = Integer.parseInt(sfcom.boxIdCompra.getText());
                 
                 if(cant >0){
-                  DefaultTableModel modelCompra = (DefaultTableModel) sfcom.tableCompra.getModel();
+                  modelCompra = (DefaultTableModel) sfcom.tableCompra.getModel();
                   ArrayList listaCompra = new ArrayList();
                   int item =1;
                   listaCompra.add(item);
@@ -213,21 +214,36 @@ public class CompraController implements ActionListener, MouseListener, KeyListe
     int idProveedor = idP.getId();
     String total = sfcom.labelTotalPagar.getText();
    if( productoD.registrarCompra(idProveedor, total)){
+        int idCompra = productoD.id_compra();
        for(int i = 0; i < sfcom.tableCompra.getRowCount(); i++){
-           int idCompra = 1;
+          
            double precio = Double.parseDouble(sfcom.tableCompra.getValueAt(i, 3).toString());
            int cantidad = Integer.parseInt(sfcom.tableCompra.getValueAt(i, 2).toString());
+           int id = Integer.parseInt(sfcom.tableCompra.getValueAt(i, 0).toString());
            double subtotal = precio * cantidad;
-           if(productoD.registrarCompraDetalle(idCompra, precio, cantidad, subtotal)){
-              
-           
-           }
+           productoD.registrarCompraDetalle(idCompra,id, precio, cantidad, subtotal);
+           producto = productoD.BuscarId(id);
+           int cantActual = producto.getCantidad() + cantidad;
+           productoD.ActualizarStock(cantActual, id);
        
        }
+       clearCompraTable();
         JOptionPane.showMessageDialog(null,"compra generada exitosamente!!");
+        PrintDetalle pd = new PrintDetalle(idCompra);
+        pd.setVisible(true);
+        
    
    }
     
+    }
+    
+    public void clearCompraTable() {
+
+        for (int i = 0; i < modelCompra.getRowCount(); i++) {
+            modelCompra.removeRow(i);
+            i = i - 1;
+        }
+
     }
      
 }

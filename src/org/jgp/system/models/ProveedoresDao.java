@@ -107,4 +107,28 @@ public class ProveedoresDao {
         }
     }
     
+    public Proveedores getProveedor(int id_compra){
+           String sql = "select p.*, c.id, c.id_proveedor from proveedores p inner join compras c on p.id=c.id_proveedor where c.id=?";
+        Proveedores prov = new Proveedores();
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, id_compra);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                prov.setCuit(rs.getString("cuit"));
+                prov.setNombre(rs.getString("proveedor"));
+                prov.setTelefono(rs.getString("telefono"));
+                prov.setDireccion(rs.getString("direccion"));
+                
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e);
+        }
+        return prov;
+    
+    
+    }
+    
 }

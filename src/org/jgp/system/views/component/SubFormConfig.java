@@ -1,13 +1,20 @@
 package org.jgp.system.views.component;
 
+import org.jgp.system.controller.ConfiguracionController;
+import org.jgp.system.models.Configuracion;
+import org.jgp.system.models.UsersDao;
 import org.jgp.system.views.IndexProgram;
 
 public class SubFormConfig extends javax.swing.JPanel {
+    Configuracion cf = new Configuracion();
+    UsersDao usDao = new UsersDao();
 
     public SubFormConfig(String name) {
         initComponents();
         setOpaque(false);
         labelForm.setText( name);
+        boxIdConfig.setVisible(false);
+        ConfiguracionController config = new ConfiguracionController(usDao,cf ,this);
     }
 
     @SuppressWarnings("unchecked")
@@ -17,6 +24,7 @@ public class SubFormConfig extends javax.swing.JPanel {
         labelForm = new javax.swing.JLabel();
         btnBack = new org.jgp.system.views.swing.Button();
         jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         code = new javax.swing.JLabel();
         boxCuitConfig = new javax.swing.JTextField();
         Nombre = new javax.swing.JLabel();
@@ -30,6 +38,7 @@ public class SubFormConfig extends javax.swing.JPanel {
         ScrollPaneMensaje = new javax.swing.JScrollPane();
         boxMensajeConfig = new javax.swing.JTextPane();
         btnModificarConfig = new org.jgp.system.views.swing.Button();
+        boxIdConfig = new javax.swing.JTextField();
 
         setMaximumSize(new java.awt.Dimension(1180, 750));
         setMinimumSize(new java.awt.Dimension(1180, 750));
@@ -47,48 +56,64 @@ public class SubFormConfig extends javax.swing.JPanel {
         });
 
         jPanel1.setBackground(new java.awt.Color(102, 115, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/jgp/system/img/229-2294828_back-team-support-png-clipart.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, 790, 620));
 
         code.setFont(new java.awt.Font("Roboto Medium", 0, 20)); // NOI18N
         code.setForeground(new java.awt.Color(212, 212, 212));
         code.setText("Cuit");
+        jPanel1.add(code, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 96, -1, -1));
 
         boxCuitConfig.setBackground(new java.awt.Color(255, 255, 255));
         boxCuitConfig.setFont(new java.awt.Font("Roboto Medium", 0, 19)); // NOI18N
         boxCuitConfig.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(boxCuitConfig, new org.netbeans.lib.awtextra.AbsoluteConstraints(129, 93, 313, -1));
 
         Nombre.setFont(new java.awt.Font("Roboto Medium", 0, 20)); // NOI18N
         Nombre.setForeground(new java.awt.Color(212, 212, 212));
         Nombre.setText("Nombre");
+        jPanel1.add(Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 147, -1, -1));
 
         boxNombreConfig.setBackground(new java.awt.Color(255, 255, 255));
         boxNombreConfig.setFont(new java.awt.Font("Roboto Medium", 0, 19)); // NOI18N
         boxNombreConfig.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(boxNombreConfig, new org.netbeans.lib.awtextra.AbsoluteConstraints(129, 144, 313, -1));
 
         telefono.setFont(new java.awt.Font("Roboto Medium", 0, 20)); // NOI18N
         telefono.setForeground(new java.awt.Color(212, 212, 212));
         telefono.setText("Telefono");
+        jPanel1.add(telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 189, -1, -1));
 
         boxTelefonoConfig.setBackground(new java.awt.Color(255, 255, 255));
         boxTelefonoConfig.setFont(new java.awt.Font("Roboto Medium", 0, 19)); // NOI18N
         boxTelefonoConfig.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(boxTelefonoConfig, new org.netbeans.lib.awtextra.AbsoluteConstraints(129, 189, 313, -1));
 
         Direccion.setFont(new java.awt.Font("Roboto Medium", 0, 20)); // NOI18N
         Direccion.setForeground(new java.awt.Color(212, 212, 212));
         Direccion.setText("Direccion");
+        jPanel1.add(Direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 240, -1, -1));
 
         boxDireccionConfig.setBackground(new java.awt.Color(255, 255, 255));
         boxDireccionConfig.setFont(new java.awt.Font("Roboto Medium", 0, 19)); // NOI18N
         boxDireccionConfig.setForeground(new java.awt.Color(0, 0, 0));
         ScrollPaneDireccion.setViewportView(boxDireccionConfig);
 
+        jPanel1.add(ScrollPaneDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(129, 240, 313, 96));
+
         Mensaje.setFont(new java.awt.Font("Roboto Medium", 0, 20)); // NOI18N
         Mensaje.setForeground(new java.awt.Color(212, 212, 212));
         Mensaje.setText("Mensaje");
+        jPanel1.add(Mensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 354, -1, -1));
 
         boxMensajeConfig.setBackground(new java.awt.Color(255, 255, 255));
         boxMensajeConfig.setFont(new java.awt.Font("Roboto Medium", 0, 19)); // NOI18N
         boxMensajeConfig.setForeground(new java.awt.Color(0, 0, 0));
         ScrollPaneMensaje.setViewportView(boxMensajeConfig);
+
+        jPanel1.add(ScrollPaneMensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(129, 354, 313, 157));
 
         btnModificarConfig.setText("Modificar");
         btnModificarConfig.addActionListener(new java.awt.event.ActionListener() {
@@ -96,64 +121,8 @@ public class SubFormConfig extends javax.swing.JPanel {
                 btnModificarConfigActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(29, 29, 29)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Nombre)
-                                    .addComponent(telefono)
-                                    .addComponent(Direccion)
-                                    .addComponent(code)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(Mensaje)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(ScrollPaneMensaje)
-                            .addComponent(boxTelefonoConfig)
-                            .addComponent(boxNombreConfig)
-                            .addComponent(boxCuitConfig, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
-                            .addComponent(ScrollPaneDireccion, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(166, 166, 166)
-                        .addComponent(btnModificarConfig, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(842, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(93, 93, 93)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(code)
-                    .addComponent(boxCuitConfig, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Nombre)
-                    .addComponent(boxNombreConfig, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(telefono)
-                    .addComponent(boxTelefonoConfig, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Direccion)
-                    .addComponent(ScrollPaneDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ScrollPaneMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Mensaje))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 146, Short.MAX_VALUE)
-                .addComponent(btnModificarConfig, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(84, 84, 84))
-        );
+        jPanel1.add(btnModificarConfig, new org.netbeans.lib.awtextra.AbsoluteConstraints(322, 541, 120, 54));
+        jPanel1.add(boxIdConfig, new org.netbeans.lib.awtextra.AbsoluteConstraints(334, 57, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -195,14 +164,16 @@ public class SubFormConfig extends javax.swing.JPanel {
     private javax.swing.JLabel Nombre;
     private javax.swing.JScrollPane ScrollPaneDireccion;
     private javax.swing.JScrollPane ScrollPaneMensaje;
-    private javax.swing.JTextField boxCuitConfig;
-    private javax.swing.JTextPane boxDireccionConfig;
-    private javax.swing.JTextPane boxMensajeConfig;
-    private javax.swing.JTextField boxNombreConfig;
-    private javax.swing.JTextField boxTelefonoConfig;
+    public javax.swing.JTextField boxCuitConfig;
+    public javax.swing.JTextPane boxDireccionConfig;
+    public javax.swing.JTextField boxIdConfig;
+    public javax.swing.JTextPane boxMensajeConfig;
+    public javax.swing.JTextField boxNombreConfig;
+    public javax.swing.JTextField boxTelefonoConfig;
     private org.jgp.system.views.swing.Button btnBack;
-    private org.jgp.system.views.swing.Button btnModificarConfig;
+    public org.jgp.system.views.swing.Button btnModificarConfig;
     private javax.swing.JLabel code;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel labelForm;
     private javax.swing.JLabel telefono;

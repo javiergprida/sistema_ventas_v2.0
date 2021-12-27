@@ -165,11 +165,10 @@ public class SubFormProductos extends javax.swing.JPanel {
         tableProducto.setFuenteHead(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         scrollPaneProducto.setViewportView(tableProducto);
         if (tableProducto.getColumnModel().getColumnCount() > 0) {
-            tableProducto.getColumnModel().getColumn(0).setPreferredWidth(10);
+            tableProducto.getColumnModel().getColumn(0).setPreferredWidth(5);
             tableProducto.getColumnModel().getColumn(1).setPreferredWidth(20);
             tableProducto.getColumnModel().getColumn(2).setPreferredWidth(60);
             tableProducto.getColumnModel().getColumn(3).setPreferredWidth(40);
-            tableProducto.getColumnModel().getColumn(3).setHeaderValue("Cantidad");
             tableProducto.getColumnModel().getColumn(4).setPreferredWidth(60);
             tableProducto.getColumnModel().getColumn(5).setPreferredWidth(60);
             tableProducto.getColumnModel().getColumn(6).setPreferredWidth(40);
