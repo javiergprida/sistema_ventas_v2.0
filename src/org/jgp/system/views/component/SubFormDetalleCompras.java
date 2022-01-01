@@ -1,6 +1,6 @@
 package org.jgp.system.views.component;
 
-import org.jgp.system.controller.detalleCompraController;
+import org.jgp.system.controller.DetalleCompraController;
 import org.jgp.system.models.Productos;
 import org.jgp.system.models.ProductosDao;
 import org.jgp.system.models.Proveedores;
@@ -19,7 +19,7 @@ public class SubFormDetalleCompras extends javax.swing.JPanel {
         setOpaque(false);
         labelForm.setText(name);
         boxIdDetalleCompra.setVisible(false);
-        detalleCompraController product = new detalleCompraController(producto, productosD, proveedores, proveedorD, this);
+        DetalleCompraController product = new DetalleCompraController(producto, productosD, proveedores, proveedorD, this);
     }
 
     @SuppressWarnings("unchecked")

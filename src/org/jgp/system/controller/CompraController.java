@@ -17,7 +17,7 @@ import org.jgp.system.models.Productos;
 import org.jgp.system.models.ProductosDao;
 import org.jgp.system.models.Proveedores;
 import org.jgp.system.models.ProveedoresDao;
-import org.jgp.system.views.PrintDetalle;
+import org.jgp.system.views.PrintDetalleCompra;
 import org.jgp.system.views.component.SubFormCompra;
 import org.jgp.system.views.component.SubFormProveedores;
 
@@ -102,7 +102,7 @@ public class CompraController implements ActionListener, MouseListener, KeyListe
                     JOptionPane.showMessageDialog(null,"El campo 'CODIGO' esta vacio, por favor ingrese el codigo");
                 }else{
                     String codigo = sfcom.boxCodigoCompra.getText();
-                    producto = productoD.BuscarCodigo(codigo);
+                    producto = productoD.BuscarCodigoCompra(codigo);
                     sfcom.boxIdCompra.setText(""+producto.getId());
                     sfcom.boxProductoCompra.setText(producto.getNombre());
                     sfcom.boxPrecioCompra.setText(""+producto.getPrecioCompra());
@@ -221,15 +221,15 @@ public class CompraController implements ActionListener, MouseListener, KeyListe
            int cantidad = Integer.parseInt(sfcom.tableCompra.getValueAt(i, 2).toString());
            int id = Integer.parseInt(sfcom.tableCompra.getValueAt(i, 0).toString());
            double subtotal = precio * cantidad;
-           productoD.registrarCompraDetalle(idCompra,id, precio, cantidad, subtotal);
+           productoD.RegistrarCompraDetalle(idCompra,id, precio, cantidad, subtotal);
            producto = productoD.BuscarId(id);
            int cantActual = producto.getCantidad() + cantidad;
-           productoD.ActualizarStock(cantActual, id);
+           productoD.ActualizarStockCompra(cantActual, id);
        
        }
        clearCompraTable();
         JOptionPane.showMessageDialog(null,"compra generada exitosamente!!");
-        PrintDetalle pd = new PrintDetalle(idCompra);
+        PrintDetalleCompra pd = new PrintDetalleCompra(idCompra);
         pd.setVisible(true);
         
    

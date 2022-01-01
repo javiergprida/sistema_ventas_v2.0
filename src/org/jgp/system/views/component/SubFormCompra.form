@@ -206,14 +206,14 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="boxIdCompra" alignment="1" max="32767" attributes="0"/>
+                      <Component id="boxIdCompra" alignment="0" min="-2" pref="39" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="Proveedor" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="comboProveedorCompra" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnNuevaCompra" alignment="3" min="-2" pref="54" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="498" max="-2" attributes="0"/>
+                  <EmptySpace pref="498" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="boxPago2" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="boxCambio2" alignment="3" min="-2" max="-2" attributes="0"/>

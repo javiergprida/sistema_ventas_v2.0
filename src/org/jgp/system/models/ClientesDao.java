@@ -17,7 +17,7 @@ public class ClientesDao {
     PreparedStatement ps;
     ResultSet rs;
     
-     public boolean Registrar(Clientes cliente) {
+    public boolean Registrar(Clientes cliente) {
         String sql = "insert into clientes(nombre, telefono ,direccion) values (?,?,?)";
         try {
             con = cn.getConnection();
@@ -36,7 +36,7 @@ public class ClientesDao {
 
     }
      
-       public List ListarClientes(String valor) {
+    public List ListarClientes(String valor) {
 
         List<Clientes> listaClientes = new ArrayList();
         String sql = "select * from clientes order by status asc";
@@ -102,6 +102,29 @@ public class ClientesDao {
             JOptionPane.showMessageDialog(null, "Error: " + e);
             return(false);
         }
+    }
+
+    public Clientes getClientes(int id_venta){
+           String sql = "select c.*, v.id, v.id_cliente from clientes c inner join ventas v on c.id = v.id_cliente where v.id=?";
+        Clientes cl = new Clientes();
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, id_venta);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                cl.setNombre(rs.getString("nombre"));
+                cl.setTelefono(rs.getString("telefono"));
+                cl.setDireccion(rs.getString("direccion"));
+                
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e);
+        }
+        return cl;
+    
+    
     }
     
 }

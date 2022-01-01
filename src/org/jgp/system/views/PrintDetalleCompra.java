@@ -14,7 +14,7 @@ import org.jgp.system.models.ProveedoresDao;
 import org.jgp.system.models.UsersDao;
 
 
-public class PrintDetalle extends javax.swing.JFrame {
+public class PrintDetalleCompra extends javax.swing.JFrame {
     Productos producto = new Productos();
     ProductosDao productoD = new ProductosDao();
     Configuracion cf = new Configuracion();
@@ -24,7 +24,7 @@ public class PrintDetalle extends javax.swing.JFrame {
     DefaultTableModel modeloDetalle = new DefaultTableModel();
 
  
-    public PrintDetalle(int id) {
+    public PrintDetalleCompra(int id) {
         initComponents();
         folioFactura.setText("" + id);
         listar(id);
@@ -41,7 +41,7 @@ public class PrintDetalle extends javax.swing.JFrame {
     }
 
      public void listar(int id) {
-        List<Productos> lista = productoD.ListaDetalle(id);
+        List<Productos> lista = productoD.ListaPrintCompra(id);
         modeloDetalle = (DefaultTableModel) TableDetalle.getModel();
         Object[] ob = new Object[4];
         for (int i = 0; i < lista.size(); i++) {
@@ -280,21 +280,22 @@ public class PrintDetalle extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PrintDetalle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrintDetalleCompra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PrintDetalle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrintDetalleCompra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PrintDetalle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrintDetalleCompra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PrintDetalle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrintDetalleCompra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JLabel CuitProveedor;
+    private javax.swing.JLabel CuitProveedor;
     public rojerusan.RSTableMetro TableDetalle;
     private org.jgp.system.views.swing.Button btnImprimir;
     public javax.swing.JLabel cuitEmpresa;

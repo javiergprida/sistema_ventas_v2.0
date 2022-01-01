@@ -112,6 +112,8 @@ public class ProductosDao {
         }
     }
 
+//compras
+
     public Productos BuscarProductos(int id) {
         String sql = "select p.*, pr.id,pr.proveedor, me.id, me.medida,ca.id,ca.categoria from productos p inner join proveedores pr on p.id_proveedor = pr.id inner join medidas me on p.id_medida = me.id inner join categorias ca on p.id_categoria = ca.id where p.id = ?";
         Productos producto = new Productos();
@@ -125,6 +127,7 @@ public class ProductosDao {
                 producto.setNombre(rs.getString("nombre"));
                 producto.setPrecioCompra(rs.getDouble("precio_compra"));
                 producto.setPrecioVenta(rs.getDouble("precio_venta"));
+                producto.setCantidad(rs.getInt("cantidad"));
                 producto.setIdProveedor(rs.getInt("id_proveedor"));
                 producto.setIdMedida(rs.getInt("id_medida"));
                 producto.setIdCategoria(rs.getInt("id_categoria"));
@@ -140,7 +143,7 @@ public class ProductosDao {
         return producto;
     }
     
-    public Productos BuscarCodigo(String codigo) {
+    public Productos BuscarCodigoCompra(String codigo) {
         String sql = "select * from productos where codigo=?";
         Productos producto = new Productos();
         try {
@@ -177,7 +180,7 @@ public class ProductosDao {
     
     }
     
-     public boolean registrarCompraDetalle(int idCompra, int id, double precio, int cantidad, double subTotal){
+     public boolean RegistrarCompraDetalle(int idCompra, int id, double precio, int cantidad, double subTotal){
         String sql = "insert into detalle_compra(id_compra, id_producto ,precio, cantidad, subtotal) values (?,?,?,?,?)";
         try {
             con = cn.getConnection();
@@ -216,7 +219,7 @@ public class ProductosDao {
         return producto;
     }
      
-     public boolean ActualizarStock(int cantidad, int id) {
+     public boolean ActualizarStockCompra(int cantidad, int id) {
         String sql = "update productos set cantidad=? where id=?";
         try {
             con = cn.getConnection();
@@ -252,7 +255,7 @@ public class ProductosDao {
      
      }
 
-     public List ListaDetalle(int id_compra) {
+     public List ListaPrintCompra(int id_compra) {
 
         List<Productos> listaDetalles = new ArrayList();
         String sql = "SELECT c.*, dc.*, p.id, p.nombre FROM compras c INNER JOIN detalle_compra dc on dc.id_compra = c.id INNER JOIN productos p ON p.id = dc.id_producto WHERE c.id = ?";
@@ -280,7 +283,7 @@ public class ProductosDao {
         return listaDetalles;
     }
 
-    public List ListaDetallecompra() {
+    public List ListaDetalleCompra() {
 
         List<CompraProductos> ListaDetallecompras = new ArrayList();
         String sql = "SELECT c.*, p.* FROM compras c inner join proveedores p;   ";
@@ -307,7 +310,158 @@ public class ProductosDao {
         }
         return ListaDetallecompras;
     }
+
+//ventas
+      public boolean registrarVenta(int idcliente, String total){
+        String sql = "insert into ventas(id_cliente, total) values (?,?)";
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, idcliente);
+            ps.setString(2, total);
+            ps.execute();
+            return true;
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e);
+            return false;
+        }
+    
+    }
+
+     public boolean RegistrarVentaDetalle(int idVenta, int id, double precio, int cantidad, double subTotal){
+        String sql = "insert into detalle_venta(id_venta, id_producto ,precio, cantidad, subtotal) values (?,?,?,?,?)";
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, idVenta);
+             ps.setInt(2, id);
+            ps.setDouble(3, precio);
+            ps.setInt(4, cantidad);
+            ps.setDouble(5, subTotal);
+            ps.execute();
+            return true;
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e);
+            return false;
+        }
+    
+    }
+
+     public int id_venta(){
+         int id = 0;
+         String sql ="select max(id) as id from ventas";
+         try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                id = rs.getInt("id");
+            }
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e);
+            
+        }
+     return id;
      
+     }
+
+     public List ListaDetalleVenta() {
+
+        List<VentaProducto> ListaDetalleVentas = new ArrayList();
+        String sql = "SELECT v.*, c.* FROM ventas v inner join clientes c;   ";
+        
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            
+            
+            while (rs.next()) {
+                VentaProducto Vproducto = new VentaProducto();
+                Vproducto.setId(rs.getInt("id"));
+                Vproducto.setNombreCli(rs.getString("c.nombre"));
+                Vproducto.setTotal(rs.getDouble("total"));
+                Vproducto.setFecha(rs.getDate("fecha"));
+                ListaDetalleVentas.add(Vproducto);
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e);
+
+        }
+        return ListaDetalleVentas;
+    }
+
+     public boolean ActualizarStockVenta(int cantidad, int id) {
+        String sql = "update productos set cantidad=? where id=?";
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+             ps.setInt(1, cantidad);
+            ps.setInt(2, id);
+            ps.execute();
+            return true;
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e);
+            return false;
+        }
+
+    }
+
+      public List ListaPrintVenta(int id_venta) {
+
+        List<Productos> listaDetalleVenta = new ArrayList();
+        String sql = "SELECT v.*, dv.*, p.id, p.nombre FROM ventas v INNER JOIN detalle_venta dv on dv.id_venta = v.id INNER JOIN productos p ON p.id = dv.id_producto WHERE v.id = ?";
+        
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, id_venta);
+            rs = ps.executeQuery();
+            
+            
+            while (rs.next()) {
+                Productos producto = new Productos();
+                producto.setCantidad(rs.getInt("cantidad"));
+                producto.setNombre(rs.getString("nombre"));
+                producto.setPrecioCompra(rs.getDouble("precio"));
+                producto.setPrecioVenta(rs.getDouble("subtotal"));
+                listaDetalleVenta.add(producto);
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e);
+
+        }
+        return listaDetalleVenta;
+    }
+
+    public Productos BuscarCodigoVenta(String codigo) {
+        String sql = "select * from productos where codigo=?";
+        Productos producto = new Productos();
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, codigo);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                producto.setId(rs.getInt("id"));
+                producto.setNombre(rs.getString("nombre"));
+                producto.setCantidad(rs.getInt("cantidad"));
+                producto.setPrecioVenta(rs.getDouble("precio_venta"));
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e);
+        }
+        return producto;
+    }
+
+    
 }
 
      

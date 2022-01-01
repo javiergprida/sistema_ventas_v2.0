@@ -13,7 +13,7 @@ import org.jgp.system.views.component.SubFormDetalleCompras;
 import org.jgp.system.views.component.SubFormProductos;
 
 
-public class detalleCompraController  {
+public class DetalleCompraController  {
 
     private Productos producto;
     private ProductosDao productoD;
@@ -26,13 +26,12 @@ public class detalleCompraController  {
 
 
 
-public detalleCompraController(Productos producto, ProductosDao productoD, Proveedores proveedor, ProveedoresDao proveedorD, SubFormDetalleCompras sfcompra) {
+public DetalleCompraController(Productos producto, ProductosDao productoD, Proveedores proveedor, ProveedoresDao proveedorD, SubFormDetalleCompras sfcompra) {
         this.producto = producto;
         this.productoD = productoD;
         this.proveedor = proveedor;
         this.proveedorD = proveedorD;
         this.sfcompra = sfcompra;
-        clearDetallecompraTable();
         listarcompras();
         
        
@@ -47,7 +46,7 @@ public detalleCompraController(Productos producto, ProductosDao productoD, Prove
  public void listarcompras() {
         Table color = new Table();
         sfcompra.tabledetalleCompra.setDefaultRenderer(sfcompra.tabledetalleCompra.getColumnClass(0), color);
-        List<CompraProductos> lista = productoD.ListaDetallecompra();
+        List<CompraProductos> lista = productoD.ListaDetalleCompra();
         modelDetalleCompra = (DefaultTableModel) sfcompra.tabledetalleCompra.getModel();
         Object[] ob = new Object[4];
         for (int i = 0; i < lista.size(); i++) {
