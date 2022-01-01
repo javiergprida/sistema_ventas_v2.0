@@ -279,5 +279,37 @@ public class ProductosDao {
         }
         return listaDetalles;
     }
+
+    public List ListaDetallecompra() {
+
+        List<CompraProductos> ListaDetallecompras = new ArrayList();
+        String sql = "SELECT c.*, p.* FROM compras c inner join proveedores p;   ";
+        
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            
+            
+            while (rs.next()) {
+                CompraProductos producto = new CompraProductos();
+                Proveedores proveedor = new Proveedores();
+                producto.setId(rs.getInt("id"));
+                producto.setNombrePro(rs.getString("p.proveedor"));
+                producto.setTotal(rs.getDouble("total"));
+                producto.setFecha(rs.getDate("fecha"));
+                ListaDetallecompras.add(producto);
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e);
+
+        }
+        return ListaDetallecompras;
+    }
      
 }
+
+     
+
+

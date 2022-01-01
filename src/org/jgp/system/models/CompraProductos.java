@@ -1,19 +1,25 @@
 
 package org.jgp.system.models;
 
+import java.util.Date;
+
 
 public class CompraProductos {
     private int id;
     private int idProveedor;
-    private String total;
+    private String nombrePro;
+    private Double total;
+    private Date fecha;
 
     public CompraProductos() {
     }
 
-    public CompraProductos(int id, int idProveedor, String total) {
+    public CompraProductos(int id, int idProveedor, String nombrePro, Double total, Date fecha) {
         this.id = id;
         this.idProveedor = idProveedor;
+        this.nombrePro = nombrePro;
         this.total = total;
+        this.fecha = fecha;
     }
 
     public int getId() {
@@ -32,13 +38,34 @@ public class CompraProductos {
         this.idProveedor = idProveedor;
     }
 
-    public String getTotal() {
+    public String getNombrePro() {
+        return nombrePro;
+    }
+
+    public void setNombrePro(String nombrePro) {
+        this.nombrePro = nombrePro;
+    }
+
+    public Double getTotal() {
         return total;
     }
 
-    public void setTotal(String total) {
+    public void setTotal(Double total) {
         this.total = total;
     }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    
+
+   
+    
 
     
     

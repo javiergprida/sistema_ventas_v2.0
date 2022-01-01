@@ -3,11 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Usuario/Desktop/JAVA/netBeansProjects/proyectos%20con%20java/SistemaVentasV2.0/src/org/jgp/system/views/component/SubFormCompra.java</file>
-            <file>file:/C:/Users/Usuario/Desktop/JAVA/netBeansProjects/proyectos%20con%20java/SistemaVentasV2.0/src/org/jgp/system/controller/CompraController.java</file>
-            <file>file:/C:/Users/Usuario/Desktop/JAVA/netBeansProjects/proyectos%20con%20java/SistemaVentasV2.0/src/org/jgp/system/models/ProductosDao.java</file>
-            <file>file:/C:/Users/Usuario/Desktop/JAVA/netBeansProjects/proyectos%20con%20java/SistemaVentasV2.0/src/org/jgp/system/models/DetallecompraProducto.java</file>
-            <file>file:/C:/Users/Usuario/Desktop/JAVA/netBeansProjects/proyectos%20con%20java/SistemaVentasV2.0/src/org/jgp/system/models/CompraProductos.java</file>
+            <file>file:/C:/Users/Usuario/Desktop/JAVA/netBeansProjects/proyectos%20con%20java/SistemaVentasV2.0/src/org/jgp/system/models/UsersDao.java</file>
+            <file>file:/C:/Users/Usuario/Desktop/JAVA/netBeansProjects/proyectos%20con%20java/SistemaVentasV2.0/src/org/jgp/system/models/ProveedoresDao.java</file>
+            <file>file:/C:/Users/Usuario/Desktop/JAVA/netBeansProjects/proyectos%20con%20java/SistemaVentasV2.0/src/org/jgp/system/views/Index.java</file>
+            <file>file:/C:/Users/Usuario/Desktop/JAVA/netBeansProjects/proyectos%20con%20java/SistemaVentasV2.0/src/org/jgp/system/views/PrintDetalle.java</file>
+            <file>file:/C:/Users/Usuario/Desktop/JAVA/netBeansProjects/proyectos%20con%20java/SistemaVentasV2.0/src/org/jgp/system/controller/ConfiguracionController.java</file>
+            <file>file:/C:/Users/Usuario/Desktop/JAVA/netBeansProjects/proyectos%20con%20java/SistemaVentasV2.0/src/org/jgp/system/views/component/SubFormConfig.java</file>
         </group>
     </open-files>
 </project-private>
